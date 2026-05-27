@@ -1,0 +1,35 @@
+import {
+    BedDouble,
+    Bus,
+    Car,
+    FileBadge,
+    MapPinned,
+    Plane,
+    Ship,
+    Ticket,
+    type LucideIcon,
+} from "lucide-react";
+import { CAB_TRIP_TYPES, FLIGHT_TRIP_TYPES, SPECIAL_FARES } from "./constants";
+
+export interface CategoryItem {
+    readonly id: string;
+    readonly label: string;
+    readonly icon: LucideIcon;
+}
+
+export const CATEGORIES = [
+    { id: "flight", label: "Flights", icon: Plane },
+    { id: "hotel", label: "Hotels", icon: BedDouble },
+    { id: "bus", label: "Buses", icon: Bus },
+    { id: "cab", label: "Cabs", icon: Car },
+    { id: "tour", label: "Tours", icon: MapPinned },
+    { id: "activity", label: "Activities", icon: Ticket },
+    { id: "visa", label: "Visa", icon: FileBadge },
+    { id: "cruise", label: "Cruise", icon: Ship },
+] as const satisfies readonly CategoryItem[];
+
+export type Category = (typeof CATEGORIES)[number]["id"];
+
+export type FlightTripType = (typeof FLIGHT_TRIP_TYPES)[number];
+export type CabTripType = (typeof CAB_TRIP_TYPES)[number];
+export type SpecialFare = (typeof SPECIAL_FARES)[number];
