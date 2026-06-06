@@ -33,3 +33,17 @@ export type Category = (typeof CATEGORIES)[number]["id"];
 export type FlightTripType = (typeof FLIGHT_TRIP_TYPES)[number];
 export type CabTripType = (typeof CAB_TRIP_TYPES)[number];
 export type SpecialFare = (typeof SPECIAL_FARES)[number];
+
+export interface Airport {
+    readonly code: string;
+    readonly city: string;
+}
+
+export interface Route {
+    readonly origin: Airport;
+    readonly destination: Airport;
+    readonly airline: string;
+    readonly price: string;
+    readonly duration: string;
+    readonly stops: string;
+}

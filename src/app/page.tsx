@@ -1,5 +1,6 @@
 import Loader from "@/components/Loader";
 import { Hero } from "@/components/pages/home/Hero";
+import { PopularRoutes } from "@/components/pages/home/PopularRoutes";
 import { CATEGORIES, Category } from "@/components/pages/home/types";
 import { redirect } from "next/navigation";
 
@@ -24,6 +25,7 @@ export default async function HomePage({ searchParams }: Props) {
             <Loader />
             <main className="min-h-screen bg-sand font-sans">
                 <Hero category={category} />
+                <PopularRoutes />
             </main>
         </>
     );
