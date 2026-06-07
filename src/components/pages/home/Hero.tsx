@@ -36,7 +36,7 @@ interface Props {
     category: Category;
 }
 
-export function Hero({ category }: Props) {
+export default function Hero({ category }: Props) {
     return (
         <section className="relative px-4 py-16 md:px-8">
             <Background />

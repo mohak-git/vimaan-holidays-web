@@ -47,3 +47,12 @@ export interface Route {
     readonly duration: string;
     readonly stops: string;
 }
+
+export interface Destination {
+    readonly href: string;
+    readonly image: string;
+    readonly title: string;
+    readonly subtitle: string;
+    readonly location: string;
+    readonly price: string;
+}

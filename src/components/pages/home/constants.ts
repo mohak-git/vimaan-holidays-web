@@ -1,4 +1,4 @@
-import type { Route } from "./types";
+import type { Destination, Route } from "./types";
 
 export const BG_IMG_URL = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4";
 
@@ -104,3 +104,60 @@ export const POPULAR_ROUTES = [
         stops: "Non-stop",
     },
 ] as const satisfies readonly Route[];
+
+export const POPULAR_DESTINATIONS = [
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1499678329028-101435549a4e",
+        title: "Vernazza Village",
+        subtitle:
+            "Sun-drenched cliffs, pastel houses, and a glass of local wine with your name on it.",
+        location: "Cinque Terre, Italy",
+        price: "84, 999",
+    },
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b",
+        title: "Luxury Atolls",
+        subtitle:
+            "The ultimate main-character energy destination—just you, overwater bungalows, and turquoise endlessness.",
+        location: "Maldives",
+        price: "1, 44, 999",
+    },
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1708174093275-5cddab3865ab",
+        title: "Balloon Valley",
+        subtitle:
+            "Float above a surreal landscape of fairy chimneys at sunrise. Yes, your Instagram will blow up.",
+        location: "Cappadocia, Turkey",
+        price: "66, 999",
+    },
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e",
+        title: "Oia Caldera",
+        subtitle:
+            "Where whitewashed dreams meet the world's most dramatic sunsets and infinite blue horizons.",
+        location: "Santorini, Greece",
+        price: "97, 999",
+    },
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1589704379319-3b83010f661e",
+        title: "White Pueblo Andaluz",
+        subtitle:
+            "Get lost in a labyrinth of sun-bleached streets, blooming geraniums, and old-world Andalusian charm.",
+        location: "Mijas, Spain",
+        price: "53, 999",
+    },
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1548013146-72479768bada",
+        title: "Taj Mahal",
+        subtitle:
+            "The ultimate monument to love, rendered in flawless marble. Pictures don't even do it justice.",
+        location: "Agra, India",
+        price: "19, 999",
+    },
+] as const satisfies readonly Destination[];
