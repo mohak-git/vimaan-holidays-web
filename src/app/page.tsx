@@ -2,6 +2,7 @@ import Loader from "@/components/Loader";
 import Hero from "@/components/pages/home/Hero";
 import PopularDestinations from "@/components/pages/home/PopularDestinations";
 import PopularRoutes from "@/components/pages/home/PopularRoutes";
+import FeaturedTrips from "@/components/pages/home/FeaturedTrips";
 import { CATEGORIES, Category } from "@/components/pages/home/types";
 import { redirect } from "next/navigation";
 
@@ -28,6 +29,7 @@ export default async function HomePage({ searchParams }: Props) {
                 <Hero category={category} />
                 <PopularRoutes />
                 <PopularDestinations />
+                <FeaturedTrips />
             </main>
         </>
     );

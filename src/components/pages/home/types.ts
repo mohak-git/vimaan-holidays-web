@@ -48,11 +48,18 @@ export interface Route {
     readonly stops: string;
 }
 
-export interface Destination {
+export interface Listing {
     readonly href: string;
     readonly image: string;
     readonly title: string;
     readonly subtitle: string;
     readonly location: string;
     readonly price: string;
+}
+
+export type Destination = Listing;
+
+export interface Trip extends Listing {
+    readonly duration: string;
+    readonly stampCode: string;
 }

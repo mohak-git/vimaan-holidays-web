@@ -1,4 +1,4 @@
-import type { Destination, Route } from "./types";
+import type { Destination, Route, Trip } from "./types";
 
 export const BG_IMG_URL = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4";
 
@@ -161,3 +161,46 @@ export const POPULAR_DESTINATIONS = [
         price: "19, 999",
     },
 ] as const satisfies readonly Destination[];
+
+export const FEATURED_TRIPS = [
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e",
+        title: "Santorini",
+        subtitle: "Sunsets & white-washed villas.",
+        location: "Greece",
+        duration: "6 Days / 5 Nights",
+        price: "85, 999",
+        stampCode: "JTR",
+    },
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99",
+        title: "Zermatt",
+        subtitle: "Alpine peaks & pristine lakes.",
+        location: "Switzerland",
+        duration: "5 Days / 4 Nights",
+        price: "92, 500",
+        stampCode: "ZRM",
+    },
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e",
+        title: "Kyoto",
+        subtitle: "Ancient temples & bamboo groves.",
+        location: "Japan",
+        duration: "8 Days / 7 Nights",
+        price: "1, 10, 000",
+        stampCode: "KIX",
+    },
+    {
+        href: "#",
+        image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8",
+        title: "Malé",
+        subtitle: "Crystal waters & coral reefs.",
+        location: "Maldives",
+        duration: "4 Days / 3 Nights",
+        price: "65, 499",
+        stampCode: "MLE",
+    },
+] as const satisfies readonly Trip[];

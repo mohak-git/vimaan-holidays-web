@@ -11,7 +11,7 @@ export default function PopularDestinations() {
                 <SectionHeader
                     title="Explore Popular Destinations"
                     description="Find your next adventure with Vimaan Holidays. From relaxing retreats to exciting explorations, we've got the perfect destination for you!"
-                    cta={{ label: "Browse All Destination", href: "/destination" }}
+                    cta={{ label: "Browse All Destination", href: "#" }}
                 />
 
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
