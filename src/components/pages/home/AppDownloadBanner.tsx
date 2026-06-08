@@ -42,7 +42,7 @@ function DownloadButton({ label, href, icon: Icon, className }: AppDownload) {
 
 export default function AppDownloadBanner() {
     return (
-        <section className="w-full pt-15 pb-20" aria-labelledby={HEADING_ID}>
+        <section className="w-full bg-red-50 py-20" aria-labelledby={HEADING_ID}>
             <div className="mx-auto max-w-7xl px-6">
                 <div className="relative overflow-hidden rounded-3xl bg-stone-900 text-sand p-10 md:p-14 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                     <div className="max-w-xl flex flex-col gap-3">

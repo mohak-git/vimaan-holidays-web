@@ -20,7 +20,7 @@ function Feature({ icon: Icon, title, body }: Feature) {
 
 export default function FeatureList() {
     return (
-        <section className="w-full pt-20 pb-15" aria-labelledby={HEADING_ID}>
+        <section className="w-full pt-15 pb-20" aria-labelledby={HEADING_ID}>
             <div className="mx-auto max-w-7xl px-6">
                 <div className="rounded-3xl border border-ink/30 p-8 md:p-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {FEATURES.map((feat) => (

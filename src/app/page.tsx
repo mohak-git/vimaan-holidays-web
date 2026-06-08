@@ -32,12 +32,12 @@ export default async function HomePage({ searchParams }: Props) {
             <main className="min-h-screen bg-sand font-sans">
                 <Hero category={category} />
                 <PopularRoutes />
+                <FeatureList />
                 <PopularDestinations />
                 <FeaturedTrips />
-                <FeatureList />
-                <AppDownloadBanner />
                 <Testimonials />
                 <Gallery />
+                <AppDownloadBanner />
             </main>
         </>
     );
