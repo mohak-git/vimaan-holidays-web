@@ -41,14 +41,14 @@ export default function Hero({ category }: Props) {
         <section className="relative px-4 py-16 md:px-8">
             <Background />
 
-            <div className="relative z-1 mx-auto flex w-full max-w-6xl flex-col items-center">
-                <div className="flex min-h-[70vh] flex-col items-center justify-center">
-                    <Headline />
-                    <SearchBar />
-                </div>
+            <div className="relative z-1 mx-auto flex w-full max-w-6xl flex-col items-center gap-10 pt-20">
                 <Suspense fallback={<BookingCardSkeleton />}>
                     <BookingCard category={category} />
                 </Suspense>
+                <div className="flex flex-col items-center justify-center">
+                    <Headline />
+                    <SearchBar />
+                </div>
             </div>
         </section>
     );
