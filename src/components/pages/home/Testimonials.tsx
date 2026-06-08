@@ -12,7 +12,6 @@ export default function Testimonials() {
                 <SectionHeader
                     title="What Our Travelers Are Saying"
                     description="See what our travelers have to say about their unforgettable experiences with us. Let their stories inspire your next adventure!"
-                    cta={{ label: "View All", href: "#" }}
                 />
 
                 <div

@@ -78,3 +78,9 @@ export interface Testimonial {
     readonly cardImage: string;
     readonly avatar: string;
 }
+
+export interface GalleryImage {
+    readonly src: string;
+    readonly width: number;
+    readonly height: number;
+}

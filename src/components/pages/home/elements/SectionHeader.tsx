@@ -9,10 +9,20 @@ interface Cta {
 interface Props {
     title: string;
     description: string;
-    cta: Cta;
+    cta?: Cta;
 }
 
 export default function SectionHeader({ title, description, cta }: Props) {
+    if (!cta)
+        return (
+            <div className="flex w-full flex-col items-center justify-between gap-6 md:flex-row md:gap-10">
+                <h2 className="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-ink md:max-w-1/2">
+                    {title}
+                </h2>
+                <p className="text-ink/60 md:max-w-1/3">{description}</p>
+            </div>
+        );
+
     return (
         <div className="flex w-full flex-col items-center justify-between gap-10 md:flex-row">
             <div className="flex max-w-xl flex-col gap-5">

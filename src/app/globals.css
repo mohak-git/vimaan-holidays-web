@@ -39,7 +39,7 @@
 
     /* Animations & Keyframes */
     --animate-marquee-left: marquee 40s linear infinite;
-    --animate-marquee-right: marquee 40s reverse infinite;
+    --animate-marquee-right: marquee 35s reverse infinite;
 }
 
 @layer base {

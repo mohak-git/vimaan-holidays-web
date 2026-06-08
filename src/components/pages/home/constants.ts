@@ -1,5 +1,5 @@
 import { CalendarX, FileCheck2, HeartHandshake, ShieldCheck } from "lucide-react";
-import type { Destination, Feature, Route, Testimonial, Trip } from "./types";
+import type { Destination, Feature, GalleryImage, Route, Testimonial, Trip } from "./types";
 
 export const BG_IMG_URL = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4";
 
@@ -247,3 +247,66 @@ export const TESTIMONIALS = [
         avatar: "https://framerusercontent.com/images/KtSssGYKG8t0cfktloePYmktnww.png",
     },
 ] as const satisfies readonly Testimonial[];
+
+export const GALLERY = [
+    {
+        src: "https://framerusercontent.com/images/MCPK7p5lTLN6GtYpPFkZlnYj0.png",
+        width: 282,
+        height: 186,
+    },
+    {
+        src: "https://framerusercontent.com/images/irxbxcWqTT1XF46oYdrlKLmKfOE.png",
+        width: 179,
+        height: 154,
+    },
+    {
+        src: "https://framerusercontent.com/images/0cyrgdyFgH4HXcbQey3Id3OdM.png",
+        width: 181,
+        height: 275,
+    },
+    {
+        src: "https://framerusercontent.com/images/qzaQswFpybM7ehhvBpCnIyQR1D0.png",
+        width: 282,
+        height: 215,
+    },
+    {
+        src: "https://framerusercontent.com/images/0YhgQURqbt0V1jk5DnLxnr8lQGM.png",
+        width: 179,
+        height: 247,
+    },
+    {
+        src: "https://framerusercontent.com/images/NIOzuaQtTENMPhLTK3Aq3wMU3q0.png",
+        width: 179,
+        height: 186,
+    },
+    {
+        src: "https://framerusercontent.com/images/aXMmKMkmbaftgXqgLW6l6Ne4Yw.jpg",
+        width: 179,
+        height: 209,
+    },
+    {
+        src: "https://framerusercontent.com/images/dW9aMqWFmgP5lFVORYj19sfPXlc.jpg",
+        width: 179,
+        height: 247,
+    },
+    {
+        src: "https://framerusercontent.com/images/I8tMu3NoQxnNKS3uTWK08UyrtU.jpg",
+        width: 282,
+        height: 209,
+    },
+    {
+        src: "https://framerusercontent.com/images/LLXplKFJHbnVubPwKelRdMqHmkI.jpg",
+        width: 181,
+        height: 275,
+    },
+    {
+        src: "https://framerusercontent.com/images/bWR2wFJxD0uj0cXXJhXUQOFMJU.jpg",
+        width: 282,
+        height: 186,
+    },
+    {
+        src: "https://framerusercontent.com/images/VyUdS5a2DU5hdC28yUIwCzIq43E.jpg",
+        width: 179,
+        height: 119,
+    },
+] as const satisfies readonly GalleryImage[];
