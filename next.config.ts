@@ -3,7 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
     reactCompiler: true,
     images: {
-        remotePatterns: [{ hostname: "images.unsplash.com", protocol: "https", pathname: "/**" }],
+        remotePatterns: [
+            { hostname: "images.unsplash.com", protocol: "https", pathname: "/**" },
+            { hostname: "framerusercontent.com", protocol: "https", pathname: "/**" },
+        ],
     },
 };
 

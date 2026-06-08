@@ -36,6 +36,10 @@
 
     /* Radius */
     --radius-card: var(--radius-card);
+
+    /* Animations & Keyframes */
+    --animate-marquee-left: marquee 40s linear infinite;
+    --animate-marquee-right: marquee 40s reverse infinite;
 }
 
 @layer base {
@@ -62,5 +66,14 @@
 
     &::-webkit-scrollbar {
         display: none;
+    }
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
     }
 }

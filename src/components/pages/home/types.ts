@@ -69,3 +69,12 @@ export interface Feature {
     readonly title: string;
     readonly body: string;
 }
+
+export interface Testimonial {
+    readonly title: string;
+    readonly quote: string;
+    readonly name: string;
+    readonly role: string;
+    readonly cardImage: string;
+    readonly avatar: string;
+}

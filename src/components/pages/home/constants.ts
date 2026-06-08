@@ -1,5 +1,5 @@
 import { CalendarX, FileCheck2, HeartHandshake, ShieldCheck } from "lucide-react";
-import type { Destination, Feature, Route, Trip } from "./types";
+import type { Destination, Feature, Route, Testimonial, Trip } from "./types";
 
 export const BG_IMG_URL = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4";
 
@@ -212,3 +212,38 @@ export const FEATURES = [
     { icon: CalendarX, title: "Free cancellation", body: "On most stays and flexible fares." },
     { icon: FileCheck2, title: "Instant visa", body: "e-Visas processed in under 72 hours." },
 ] as const satisfies readonly Feature[];
+
+export const TESTIMONIALS = [
+    {
+        title: "Seamless and Stress-Free!",
+        quote: "The guided hiking tour was breathtaking, and the accommodations were top-notch. Vimaan Holidays made my dream vacation a reality!",
+        name: "Andrew Scott",
+        role: "Solo Traveler",
+        cardImage: "https://framerusercontent.com/images/X4AiJgYs03AysIMhMEeZGQ6Xd4.png",
+        avatar: "https://framerusercontent.com/images/pVkeEQv2UKwNZJVM7CksmKA0Pt8.png",
+    },
+    {
+        title: "Best Travel Experience Ever!",
+        quote: "I've been on many trips, but Vimaan Holidays stands out for their attention to detail and friendly guides. The mountain biking tour was thrilling!",
+        name: "Matthew Logan",
+        role: "Adventure Seeker",
+        cardImage: "https://framerusercontent.com/images/QmA5zGyjeYJowBp8OMjiAV9CWHI.png",
+        avatar: "https://framerusercontent.com/images/VWNq4C9hmkcyWtDTLUolLEPpiY.png",
+    },
+    {
+        title: "Seamless and Stress-Free!",
+        quote: "The guided hiking tour was breathtaking, and the accommodations were top-notch. Vimaan Holidays made my dream vacation a reality!",
+        name: "Benjamin Thomas",
+        role: "Travel Enthusiast",
+        cardImage: "https://framerusercontent.com/images/cYMP6edvef3Ts0BOSvxn33YgzMs.png",
+        avatar: "https://framerusercontent.com/images/3K9ScQ9VBfXP80NENZfe54vnak.png",
+    },
+    {
+        title: "Amazing Service and Support!",
+        quote: "I booked a solo safari with Vimaan Holidays, and it was the best decision. The itinerary was well-planned, and I felt completely safe throughout.",
+        name: "Benjamin Thomas",
+        role: "Travel Enthusiast",
+        cardImage: "https://framerusercontent.com/images/JegQab06pHYTzDCbVzjMAkwOmRE.png",
+        avatar: "https://framerusercontent.com/images/KtSssGYKG8t0cfktloePYmktnww.png",
+    },
+] as const satisfies readonly Testimonial[];
