@@ -63,3 +63,9 @@ export interface Trip extends Listing {
     readonly duration: string;
     readonly stampCode: string;
 }
+
+export interface Feature {
+    readonly icon: LucideIcon;
+    readonly title: string;
+    readonly body: string;
+}

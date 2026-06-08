@@ -1,4 +1,5 @@
-import type { Destination, Route, Trip } from "./types";
+import { CalendarX, FileCheck2, HeartHandshake, ShieldCheck } from "lucide-react";
+import type { Destination, Feature, Route, Trip } from "./types";
 
 export const BG_IMG_URL = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4";
 
@@ -204,3 +205,10 @@ export const FEATURED_TRIPS = [
         stampCode: "MLE",
     },
 ] as const satisfies readonly Trip[];
+
+export const FEATURES = [
+    { icon: ShieldCheck, title: "Price lock", body: "Lock today's fare for up to 48 hours." },
+    { icon: HeartHandshake, title: "24x7 human help", body: "Real people, every time zone." },
+    { icon: CalendarX, title: "Free cancellation", body: "On most stays and flexible fares." },
+    { icon: FileCheck2, title: "Instant visa", body: "e-Visas processed in under 72 hours." },
+] as const satisfies readonly Feature[];
