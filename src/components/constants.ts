@@ -1,4 +1,4 @@
-import { Facebook, Heart, HelpCircle, Instagram, Twitter, Youtube } from "lucide-react";
+import { Compass, Facebook, Home, Instagram, Luggage, Twitter, Users, Youtube } from "lucide-react";
 import { IconLink, Link, NavColumn } from "./types";
 
 export const SOCIAL_LINKS: IconLink[] = [
@@ -49,6 +49,8 @@ export const LEGAL_LINKS: Link[] = [
 ];
 
 export const NAV_LINKS: IconLink[] = [
-    { href: "/wishlist", icon: Heart, label: "Wishlist" },
-    { href: "/help", icon: HelpCircle, label: "Help" },
+    { href: "/", icon: Home, label: "Home" },
+    { href: "/about", icon: Compass, label: "About" },
+    { href: "/packages", icon: Luggage, label: "Packages" },
+    { href: "/community", icon: Users, label: "Community" },
 ];
