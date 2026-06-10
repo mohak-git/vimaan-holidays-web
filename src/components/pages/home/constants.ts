@@ -1,5 +1,13 @@
 import { CalendarX, FileCheck2, HeartHandshake, ShieldCheck } from "lucide-react";
-import type { Destination, Feature, GalleryImage, Route, Testimonial, Trip } from "./types";
+import type {
+    BrandLogo,
+    Destination,
+    Feature,
+    GalleryImage,
+    Route,
+    Testimonial,
+    Trip,
+} from "./types";
 
 export const BG_IMG_URL = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4";
 
@@ -109,12 +117,12 @@ export const POPULAR_ROUTES = [
 export const POPULAR_DESTINATIONS = [
     {
         href: "#",
-        image: "https://images.unsplash.com/photo-1499678329028-101435549a4e",
-        title: "Vernazza Village",
+        image: "https://images.unsplash.com/photo-1604999333679-b86d54738315",
+        title: "Spiritual Cliffs & Swings",
         subtitle:
-            "Sun-drenched cliffs, pastel houses, and a glass of local wine with your name on it.",
-        location: "Cinque Terre, Italy",
-        price: "84, 999",
+            "Dusk-lit temples hanging over roaring oceans, lush jungle swings, and morning views that feed the soul.",
+        location: "Bali, Indonesia",
+        price: "49, 999",
     },
     {
         href: "#",
@@ -127,30 +135,30 @@ export const POPULAR_DESTINATIONS = [
     },
     {
         href: "#",
-        image: "https://images.unsplash.com/photo-1708174093275-5cddab3865ab",
-        title: "Balloon Valley",
+        image: "https://images.unsplash.com/photo-1601225612316-b4733315a717",
+        title: "Emerald Islands",
         subtitle:
-            "Float above a surreal landscape of fairy chimneys at sunrise. Yes, your Instagram will blow up.",
-        location: "Cappadocia, Turkey",
-        price: "66, 999",
+            "Cruise past towering limestone cliffs, explore neon-lit night markets, and find your own slice of tropical paradise.",
+        location: "Phuket, Thailand",
+        price: "42, 999",
     },
     {
         href: "#",
-        image: "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e",
-        title: "Oia Caldera",
+        image: "https://images.unsplash.com/photo-1518684079-3c830dcef090",
+        title: "Skyline & Dunes",
         subtitle:
-            "Where whitewashed dreams meet the world's most dramatic sunsets and infinite blue horizons.",
-        location: "Santorini, Greece",
-        price: "97, 999",
+            "Where gravity-defying architecture meets golden desert sands. Get ready for peak luxury and sci-fi vibes.",
+        location: "Dubai, UAE",
+        price: "64, 999",
     },
     {
         href: "#",
-        image: "https://images.unsplash.com/photo-1589704379319-3b83010f661e",
-        title: "White Pueblo Andaluz",
+        image: "https://images.unsplash.com/photo-1697850084120-4896a446a04d",
+        title: "Dragon's Bay",
         subtitle:
-            "Get lost in a labyrinth of sun-bleached streets, blooming geraniums, and old-world Andalusian charm.",
-        location: "Mijas, Spain",
-        price: "53, 999",
+            "Sail through thousands of towering limestone islets shrouded in mist, where ancient myth meets emerald waters.",
+        location: "Ha Long Bay, Vietnam",
+        price: "38, 999",
     },
     {
         href: "#",
@@ -162,7 +170,6 @@ export const POPULAR_DESTINATIONS = [
         price: "19, 999",
     },
 ] as const satisfies readonly Destination[];
-
 export const FEATURED_TRIPS = [
     {
         href: "#",
@@ -310,3 +317,21 @@ export const GALLERY = [
         height: 119,
     },
 ] as const satisfies readonly GalleryImage[];
+
+export const BRAND_LOGOS = [
+    {
+        brand: "Booking.com",
+        src: "https://www.logo.wine/a/logo/Booking.com/Booking.com-Logo.wine.svg",
+    },
+    { brand: "Expedia", src: "https://www.logo.wine/a/logo/Expedia/Expedia-Logo.wine.svg" },
+    { brand: "Airbnb", src: "https://www.logo.wine/a/logo/Airbnb/Airbnb-Logo.wine.svg" },
+    {
+        brand: "TripAdvisor",
+        src: "https://www.logo.wine/a/logo/TripAdvisor/TripAdvisor-Logo.wine.svg",
+    },
+    {
+        brand: "Skyscanner",
+        src: "https://www.logo.wine/a/logo/Skyscanner/Skyscanner-Logo.wine.svg",
+    },
+    { brand: "Kayak", src: "https://www.logo.wine/a/logo/Kayak.com/Kayak.com-Logo.wine.svg" },
+] as const satisfies readonly BrandLogo[];

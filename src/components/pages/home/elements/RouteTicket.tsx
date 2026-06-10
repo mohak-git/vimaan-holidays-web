@@ -75,7 +75,7 @@ export default function Ticket({ route }: { route: Route }) {
     return (
         <button
             type="button"
-            className="group flex shrink-0 snap-start h-[13.5vh] overflow-hidden rounded-lg bg-white/75 text-left transition-all duration-300 hover:bg-white hover:scale-101 focus:outline-none focus-visible:ring-2 focus-visible:ring-coral cursor-pointer"
+            className="group flex shrink-0 snap-start h-25 overflow-hidden rounded-lg bg-white/75 text-left transition-all duration-300 hover:bg-white hover:scale-101 focus:outline-none focus-visible:ring-2 focus-visible:ring-coral cursor-pointer"
         >
             <MainCard route={route} />
             <Divider airline={route.airline} />

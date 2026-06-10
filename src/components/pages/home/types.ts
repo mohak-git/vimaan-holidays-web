@@ -84,3 +84,8 @@ export interface GalleryImage {
     readonly width: number;
     readonly height: number;
 }
+
+export interface BrandLogo {
+    readonly brand: string;
+    readonly src: string;
+}

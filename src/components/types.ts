@@ -1,4 +1,5 @@
 import { LucideIcon } from "lucide-react";
+import { ComponentType, SVGProps } from "react";
 
 export interface Link {
     label: string;
@@ -10,4 +11,10 @@ export interface IconLink extends Link {
 export interface NavColumn {
     title: string;
     links: Link[];
+}
+
+export interface DownloadLink {
+    label: string;
+    href: string;
+    icon: ComponentType<SVGProps<SVGSVGElement>>;
 }

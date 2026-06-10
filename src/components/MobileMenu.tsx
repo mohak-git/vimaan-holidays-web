@@ -1,10 +1,11 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { Plane, User, X } from "lucide-react";
+import { Download, User, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { NAV_LINKS } from "./constants";
+import { DOWNLOAD_LINKS, NAV_LINKS } from "./constants";
 
 interface Props {
     isOpen: boolean;
@@ -66,10 +67,13 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
                                 aria-label="Vimaan Holidays Home"
                                 onClick={handleClose}
                             >
-                                <Plane className="size-6 text-coral" />
-                                <span className="font-serif text-lg text-white tracking-wide">
-                                    Vimaan Holidays
-                                </span>
+                                <Image
+                                    src="/logo.svg"
+                                    alt="Vimaan Holidays"
+                                    width={200}
+                                    height={50}
+                                    className="h-10 w-auto"
+                                />
                             </Link>
 
                             <button
@@ -95,6 +99,28 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
                                     <span>{label}</span>
                                 </Link>
                             ))}
+                        </div>
+
+                        <div className="p-4 border-t border-white/10">
+                            <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-3 flex items-center gap-2">
+                                <Download className="size-3" />
+                                Get the App
+                            </p>
+                            <div className="flex gap-4">
+                                {DOWNLOAD_LINKS.map(({ label, href, icon: Icon }) => (
+                                    <Link
+                                        key={label}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex-1 flex items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80 transition-all duration-300 hover:border-coral/40 hover:bg-coral/10 hover:text-white"
+                                        onClick={handleClose}
+                                    >
+                                        <Icon className="h-4 w-4 text-white/60" />
+                                        <span className="font-medium">{label}</span>
+                                    </Link>
+                                ))}
+                            </div>
                         </div>
 
                         <div className="absolute bottom-0 w-full px-5 py-4 border-t border-white/10">

@@ -1,4 +1,4 @@
-import { Plane } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { LEGAL_LINKS, NAV_COLUMNS, SOCIAL_LINKS } from "./constants";
 
@@ -14,10 +14,13 @@ export default function Footer() {
                             className="inline-flex items-center gap-2 mb-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded-lg p-1"
                             aria-label="Vimaan Holidays Home"
                         >
-                            <Plane className="size-8 text-coral" />
-                            <span className="font-serif text-2xl font-medium text-white tracking-wide">
-                                Vimaan Holidays
-                            </span>
+                            <Image
+                                src="/logo.svg"
+                                alt="Vimaan Holidays"
+                                width={200}
+                                height={50}
+                                className="h-10 sm:h-20 w-auto"
+                            />
                         </Link>
 
                         <p className="text-sand/60 text-sm leading-relaxed max-w-sm mb-8">
@@ -61,9 +64,33 @@ export default function Footer() {
                     ))}
                 </div>
 
+                <div className="relative flex items-center justify-center pt-8">
+                    <div className="absolute inset-x-0 bottom-1/2 h-px bg-white/10" />
+
+                    <Link
+                        href="https://digicraft.one"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 z-1 flex items-center gap-1 bg-ink px-5"
+                    >
+                        <span className="text-[8px] uppercase tracking-widest text-sand/30 group-hover:text-coral transition-colors duration-500">
+                            Designed &amp; developed by
+                        </span>
+
+                        <Image
+                            src="/logo.svg"
+                            alt="DigiCraft"
+                            width={80}
+                            height={20}
+                            className="h-4 group-hover:h-6 w-auto transition-all duration-300"
+                        />
+                    </Link>
+                </div>
+
                 {/* Bottom bar */}
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-sand/40">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-sand/40">
                     <p>&copy; 2026 Vimaan Holidays. All rights reserved.</p>
+
                     <nav className="flex items-center gap-6" aria-label="Legal">
                         {LEGAL_LINKS.map(({ label, href }) => (
                             <Link

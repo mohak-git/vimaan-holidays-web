@@ -1,5 +1,6 @@
 import { Compass, Facebook, Home, Instagram, Luggage, Twitter, Users, Youtube } from "lucide-react";
-import { IconLink, Link, NavColumn } from "./types";
+import { AppStoreIcon, GooglePlayIcon } from "./Icons";
+import { DownloadLink, IconLink, Link, NavColumn } from "./types";
 
 export const SOCIAL_LINKS: IconLink[] = [
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
@@ -53,4 +54,9 @@ export const NAV_LINKS: IconLink[] = [
     { href: "/about", icon: Compass, label: "About" },
     { href: "/packages", icon: Luggage, label: "Packages" },
     { href: "/community", icon: Users, label: "Community" },
+];
+
+export const DOWNLOAD_LINKS: readonly DownloadLink[] = [
+    { label: "Google Play", href: "#", icon: GooglePlayIcon },
+    { label: "App Store", href: "#", icon: AppStoreIcon },
 ];

@@ -1,28 +1,10 @@
-import { AppStoreIcon, GooglePlayIcon } from "@/components/Icons";
+import { DOWNLOAD_LINKS } from "@/components/constants";
+import { DownloadLink } from "@/components/types";
 import Link from "next/link";
-import { ComponentType, SVGProps } from "react";
 
-interface AppDownload {
-    label: string;
-    href: string;
-    icon: ComponentType<SVGProps<SVGSVGElement>>;
+interface AppDownload extends DownloadLink {
     className: string;
 }
-
-const APP_DOWNLOADS: readonly AppDownload[] = [
-    {
-        label: "Android",
-        href: "#",
-        icon: GooglePlayIcon,
-        className: "bg-sand text-ink hover:bg-sand-dark",
-    },
-    {
-        label: "iOS",
-        href: "#",
-        icon: AppStoreIcon,
-        className: "bg-sand/10 text-sand border border-sand/20 hover:bg-sand/20",
-    },
-];
 
 const HEADING_ID = "app-download-heading";
 
@@ -32,7 +14,7 @@ function DownloadButton({ label, href, icon: Icon, className }: AppDownload) {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center gap-2 px-5 py-3  text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral ${className}`}
+            className={`inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral ${className}`}
         >
             <Icon className="h-4 w-4 shrink-0 text-red-500" />
             {label}
@@ -61,9 +43,16 @@ export default function AppDownloadBanner() {
                     </div>
 
                     <div className="flex gap-4">
-                        {APP_DOWNLOADS.map((download) => (
-                            <DownloadButton key={download.label} {...download} />
-                        ))}
+                        {DOWNLOAD_LINKS.map((download, index) => {
+                            const link = {
+                                ...download,
+                                className:
+                                    index === 0
+                                        ? "bg-sand text-ink hover:bg-sand-dark"
+                                        : "bg-sand/10 text-sand border border-sand/20 hover:bg-sand/20",
+                            };
+                            return <DownloadButton key={download.label} {...link} />;
+                        })}
                     </div>
 
                     <div

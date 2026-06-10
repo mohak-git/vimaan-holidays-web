@@ -1,9 +1,11 @@
 import Loader from "@/components/Loader";
 import AppDownloadBanner from "@/components/pages/home/AppDownloadBanner";
+import BrandLogos from "@/components/pages/home/BrandLogos";
 import FeaturedTrips from "@/components/pages/home/FeaturedTrips";
 import FeatureList from "@/components/pages/home/FeatureList";
 import Gallery from "@/components/pages/home/Gallery";
 import Hero from "@/components/pages/home/Hero";
+import Newsletter from "@/components/pages/home/Newsletter";
 import PopularDestinations from "@/components/pages/home/PopularDestinations";
 import PopularRoutes from "@/components/pages/home/PopularRoutes";
 import Testimonials from "@/components/pages/home/Testimonials";
@@ -32,11 +34,13 @@ export default async function HomePage({ searchParams }: Props) {
             <main className="min-h-screen bg-sand font-sans">
                 <Hero category={category} />
                 <PopularRoutes />
+                <BrandLogos />
                 <FeatureList />
                 <PopularDestinations />
                 <FeaturedTrips />
                 <Testimonials />
                 <Gallery />
+                <Newsletter />
                 <AppDownloadBanner />
             </main>
         </>

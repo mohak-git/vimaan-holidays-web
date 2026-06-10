@@ -8,7 +8,7 @@ interface Cta {
 
 interface Props {
     title: string;
-    description: string;
+    description?: string;
     cta?: Cta;
 }
 
@@ -19,7 +19,7 @@ export default function SectionHeader({ title, description, cta }: Props) {
                 <h2 className="font-serif text-3xl md:text-4xl font-semibold tracking-tight text-ink md:max-w-1/2">
                     {title}
                 </h2>
-                <p className="text-ink/60 md:max-w-1/3">{description}</p>
+                {description && <p className="text-ink/60 md:max-w-1/3">{description}</p>}
             </div>
         );
 

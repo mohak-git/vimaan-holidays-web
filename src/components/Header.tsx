@@ -1,9 +1,10 @@
 "use client";
 
-import { Menu, Plane, User } from "lucide-react";
+import { Menu, User } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { NAV_LINKS } from "./constants";
+import { DOWNLOAD_LINKS, NAV_LINKS } from "./constants";
 import MobileMenu from "./MobileMenu";
 
 export default function Header() {
@@ -33,16 +34,41 @@ export default function Header() {
             >
                 <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
                     {/* Logo and Brand */}
-                    <Link
-                        href="/"
-                        className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded-lg p-1"
-                        aria-label="Vimaan Holidays Home"
-                    >
-                        <Plane className="size-8 text-coral" />
-                        <span className="font-serif text-2xl text-white tracking-wide">
-                            Vimaan Holidays
-                        </span>
-                    </Link>
+                    <div className="flex gap-4 xl:gap-16 items-center">
+                        <Link
+                            href="/"
+                            className="flex items-center shrink-0 gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded-lg p-1"
+                            aria-label="Vimaan Holidays Home"
+                        >
+                            <Image
+                                src="/vimaan-holidays.png"
+                                alt="Vimaan Holidays"
+                                width={200}
+                                height={50}
+                                className="h-10 sm:h-12 w-auto"
+                            />
+                        </Link>
+
+                        {/* App Download */}
+                        <div className="hidden lg:flex justify-between items-center gap-3 text-xs text-white/50">
+                            <span className="whitespace-nowrap">Get the app</span>
+
+                            <div className="flex items-center gap-2">
+                                {DOWNLOAD_LINKS.map(({ label, href, icon: Icon }) => (
+                                    <Link
+                                        key={label}
+                                        href={href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-white/70 hover:text-coral transition-colors"
+                                        aria-label={`Download on ${label}`}
+                                    >
+                                        <Icon className="h-4 w-4" />
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
 
                     {/* Desktop Nav */}
                     <nav
