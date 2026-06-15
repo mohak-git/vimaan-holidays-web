@@ -1,6 +1,6 @@
 "use client";
 
-import { CONVENIENCE_FEE, INSURANCE_PER_PERSON } from "@/config/constants";
+import { INSURANCE_PER_PERSON } from "@/config/constants";
 import type { PassengerFormData } from "@/lib/schemas/passenger";
 import { passengerSchema } from "@/lib/schemas/passenger";
 import { getSavedTravellers } from "@/lib/services/savedTravellers";
@@ -87,7 +87,7 @@ export function useBookingForm() {
             insuranceAdded: false,
             insurancePerPerson: INSURANCE_PER_PERSON,
             promoDiscount: 0,
-            convenienceFee: CONVENIENCE_FEE,
+            convenienceFee: 0,
         });
     }, [farePrice, totalPassengers]);
 

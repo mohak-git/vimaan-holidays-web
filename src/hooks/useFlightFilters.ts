@@ -21,39 +21,32 @@ export function useFlightFilters(
 
     const updateFilter = useCallback(
         (key: keyof FlightFilters, value: unknown) => {
-            setFilters((prev) => {
-                const updated = { ...prev, [key]: value } as FlightFilters;
-                onFilterChange({ [key]: value } as Partial<FlightFilters>);
-                return updated;
-            });
+            setFilters((prev) => ({ ...prev, [key]: value }) as FlightFilters);
+            onFilterChange({ [key]: value } as Partial<FlightFilters>);
         },
         [onFilterChange],
     );
 
     const toggleArrayFilter = useCallback(
         (key: "stops" | "airlines" | "departureTimeSlots" | "arrivalTimeSlots", value: unknown) => {
-            setFilters((prev) => {
-                const current = prev[key] as unknown[];
-                const updated = current.includes(value)
-                    ? current.filter((v) => v !== value)
-                    : [...current, value];
-                onFilterChange({ [key]: updated } as Partial<FlightFilters>);
-                return { ...prev, [key]: updated } as FlightFilters;
-            });
+            const current = filters[key] as unknown[];
+            const updated = current.includes(value)
+                ? current.filter((v) => v !== value)
+                : [...current, value];
+            setFilters({ ...filters, [key]: updated } as FlightFilters);
+            onFilterChange({ [key]: updated } as Partial<FlightFilters>);
         },
-        [onFilterChange],
+        [filters, onFilterChange],
     );
 
     const handlePriceChange = useCallback(
         (idx: 0 | 1, value: number) => {
-            setFilters((prev) => {
-                const newRange: [number, number] = [...prev.priceRange];
-                newRange[idx] = value;
-                onFilterChange({ priceRange: newRange });
-                return { ...prev, priceRange: newRange };
-            });
+            const newRange: [number, number] = [...filters.priceRange];
+            newRange[idx] = value;
+            setFilters({ ...filters, priceRange: newRange });
+            onFilterChange({ priceRange: newRange });
         },
-        [onFilterChange],
+        [filters, onFilterChange],
     );
 
     const resetFilters = useCallback(() => {

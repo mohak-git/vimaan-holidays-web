@@ -6,7 +6,7 @@ import { useBookingStore } from "@/store/useBookingStore";
 import type { PriceBreakdown } from "@/types/flights/booking";
 import { useMemo } from "react";
 
-export function usePriceBreakdown(): PriceBreakdown {
+export function usePriceBreakdown(includeConvenienceFee = false): PriceBreakdown {
     const farePrice = useBookingStore((s) => s.farePrice);
     const passengerCount = useBookingStore((s) => s.passengers.length);
     const selectedSeats = useBookingStore((s) => s.selectedSeats);
@@ -29,7 +29,7 @@ export function usePriceBreakdown(): PriceBreakdown {
             insuranceAdded,
             insurancePerPerson: INSURANCE_PER_PERSON,
             promoDiscount,
-            convenienceFee: CONVENIENCE_FEE,
+            convenienceFee: includeConvenienceFee ? CONVENIENCE_FEE : 0,
         });
     }, [
         farePrice,
@@ -39,5 +39,6 @@ export function usePriceBreakdown(): PriceBreakdown {
         extraBaggage,
         insuranceAdded,
         promoDiscount,
+        includeConvenienceFee,
     ]);
 }

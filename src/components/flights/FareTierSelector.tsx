@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { getFareEntries, priceWithTax } from "@/lib/utils/flight";
 import { formatPrice } from "@/lib/utils/formatPrice";
-import { getFareEntries } from "@/lib/utils/flight";
 import type { FareTier, FareTierName } from "@/types/flights/flight";
 import { ArmchairIcon, BadgeCheck, Luggage, RotateCcw, UtensilsCrossed } from "lucide-react";
 
@@ -50,11 +50,11 @@ export default function FareTierSelector({ fares, selectedFare, adults, onSelect
                             </div>
 
                             <p className="text-2xl font-bold font-serif text-coral mb-2">
-                                {formatPrice(fare.price)}
+                                {formatPrice(priceWithTax(fare.price))}
                                 <span className="text-sm font-normal text-ink/40"> / adult</span>
                             </p>
                             <p className="text-xs text-ink/50 mb-2">
-                                Total: {formatPrice(fare.price * adults)}
+                                Total: {formatPrice(priceWithTax(fare.price) * adults)}
                             </p>
 
                             <div className="grid grid-cols-2 gap-2 text-xs text-ink/60">

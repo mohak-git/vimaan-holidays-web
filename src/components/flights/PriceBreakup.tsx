@@ -18,7 +18,9 @@ export default function PriceBreakup({ breakdown, className }: PriceBreakupProps
         { key: "mealTotal", label: "Meals", value: breakdown.mealTotal },
         { key: "baggageTotal", label: "Extra Baggage", value: breakdown.baggageTotal },
         { key: "insurance", label: "Travel Insurance", value: breakdown.insurance },
-        { key: "convenienceFee", label: "Convenience Fee", value: breakdown.convenienceFee },
+        ...(breakdown.convenienceFee > 0
+            ? [{ key: "convenienceFee", label: "Convenience Fee", value: breakdown.convenienceFee }]
+            : []),
         {
             key: "promoDiscount",
             label: "Promo Discount",
@@ -28,5 +30,11 @@ export default function PriceBreakup({ breakdown, className }: PriceBreakupProps
         },
     ];
 
-    return <GenericPriceBreakup lineItems={lineItems} grandTotal={breakdown.grandTotal} className={className} />;
+    return (
+        <GenericPriceBreakup
+            lineItems={lineItems}
+            grandTotal={breakdown.grandTotal}
+            className={className}
+        />
+    );
 }

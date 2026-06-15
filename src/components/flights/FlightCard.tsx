@@ -2,11 +2,11 @@
 
 "use client";
 
-import { cn } from "@/lib/utils";
-import { formatPrice } from "@/lib/utils/formatPrice";
-import { minFarePrice, FARE_TIER_KEYS } from "@/lib/utils/flight";
 import { AirlineBadge } from "@/components/ui/AirlineBadge";
 import { StopsBadge } from "@/components/ui/StopsBadge";
+import { cn } from "@/lib/utils";
+import { FARE_TIER_KEYS, minFarePrice, priceWithTax } from "@/lib/utils/flight";
+import { formatPrice } from "@/lib/utils/formatPrice";
 import type { FareTierName, Flight } from "@/types/flights/flight";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ChevronUp, Plane } from "lucide-react";
@@ -33,9 +33,7 @@ export default function FlightCard({ flight, isSelected, onSelect }: FlightCardP
                     <div className="flex items-center gap-3 min-w-[160px]">
                         <AirlineBadge code={flight.airline} />
                         <div>
-                            <p className="font-semibold text-sm">
-                                {flight.airline}
-                            </p>
+                            <p className="font-semibold text-sm">{flight.airline}</p>
                             <p className="text-xs text-ink/50">{flight.flightNumber}</p>
                         </div>
                     </div>
@@ -68,7 +66,7 @@ export default function FlightCard({ flight, isSelected, onSelect }: FlightCardP
 
                     <div className="flex flex-col items-end gap-2 min-w-[140px]">
                         <p className="text-lg font-bold font-serif text-coral">
-                            {formatPrice(minFarePrice(flight))}
+                            {formatPrice(priceWithTax(minFarePrice(flight)))}
                         </p>
                         <button
                             onClick={() => setExpanded(!expanded)}
@@ -112,7 +110,7 @@ export default function FlightCard({ flight, isSelected, onSelect }: FlightCardP
                                                 {key}
                                             </h4>
                                             <p className="text-2xl font-bold font-serif text-coral mt-1">
-                                                {formatPrice(fare.price)}
+                                                {formatPrice(priceWithTax(fare.price))}
                                             </p>
                                             <div className="text-xs text-ink/60 space-y-1 mt-2">
                                                 <p>{fare.checkinBaggage} check-in</p>

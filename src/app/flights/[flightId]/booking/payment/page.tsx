@@ -67,6 +67,16 @@ export default function PaymentPage() {
                                 discount={promoDiscount}
                             />
                         </div>
+                    </div>
+
+                    <div className="lg:w-[380px] shrink-0 space-y-4">
+                        <FlightSummaryCard
+                            flight={flightDetails!}
+                            fareTier={selectedFare || undefined}
+                            travellers={travellers}
+                            farePrice={farePrice}
+                        />
+                        <PriceBreakup breakdown={breakdown} />
 
                         <div className="flex items-start gap-3">
                             <input
@@ -108,16 +118,6 @@ export default function PaymentPage() {
                                 <>Pay {formatPrice(breakdown.grandTotal)}</>
                             )}
                         </button>
-                    </div>
-
-                    <div className="lg:w-[380px] shrink-0 space-y-4">
-                        <FlightSummaryCard
-                            flight={flightDetails!}
-                            fareTier={selectedFare || undefined}
-                            travellers={travellers}
-                            farePrice={farePrice}
-                        />
-                        <PriceBreakup breakdown={breakdown} />
                     </div>
                 </div>
             </div>

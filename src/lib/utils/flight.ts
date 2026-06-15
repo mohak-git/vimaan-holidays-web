@@ -1,12 +1,14 @@
-import type { Flight, FareTierName } from "@/types/flights/flight";
+import type { FareTierName, Flight } from "@/types/flights/flight";
 import type { TimeSlot } from "@/types/flights/search";
 
+export const TAX_RATE = 0.18;
+
+export function priceWithTax(price: number): number {
+    return Math.round(price * (1 + TAX_RATE));
+}
+
 export function minFarePrice(flight: Flight): number {
-    return Math.min(
-        flight.fares.saver.price,
-        flight.fares.value.price,
-        flight.fares.flex.price,
-    );
+    return Math.min(flight.fares.saver.price, flight.fares.value.price, flight.fares.flex.price);
 }
 
 export function getTimeSlot(time: string): TimeSlot {

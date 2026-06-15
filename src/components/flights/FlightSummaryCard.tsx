@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { priceWithTax } from "@/lib/utils/flight";
 import { formatPrice } from "@/lib/utils/formatPrice";
 import { formatTravellers } from "@/lib/utils/travellers";
 import type { FareTierName, FlightBookingInfo } from "@/types/flights/flight";
@@ -64,7 +65,9 @@ export default function FlightSummaryCard({
     farePrice,
     className,
 }: FlightSummaryProps) {
-    const travellerLabel = travellers ? formatTravellers(travellers) : `${adults} Adult${adults > 1 ? "s" : ""}`;
+    const travellerLabel = travellers
+        ? formatTravellers(travellers)
+        : `${adults} Adult${adults > 1 ? "s" : ""}`;
 
     return (
         <div
@@ -105,7 +108,7 @@ export default function FlightSummaryCard({
                             <span className="text-sm font-medium capitalize">{fareTier} Fare</span>
                             {farePrice != null && (
                                 <span className="text-lg font-bold font-serif text-coral">
-                                    {formatPrice(farePrice)}
+                                    {formatPrice(priceWithTax(farePrice))}
                                 </span>
                             )}
                         </div>

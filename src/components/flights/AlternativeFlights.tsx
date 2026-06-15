@@ -1,8 +1,8 @@
 import { StopsBadge } from "@/components/ui/StopsBadge";
 import { getAllAirlines } from "@/lib/services/airlines";
 import { cn } from "@/lib/utils";
+import { minFarePrice, priceWithTax } from "@/lib/utils/flight";
 import { formatPrice } from "@/lib/utils/formatPrice";
-import { minFarePrice } from "@/lib/utils/flight";
 import type { Flight } from "@/types/flights/flight";
 import Link from "next/link";
 
@@ -62,7 +62,7 @@ export default function AlternativeFlights({ flights, currentFlightId }: Alterna
                             <div className="flex items-center justify-between">
                                 <StopsBadge stops={flight.stops} />
                                 <span className="text-lg font-bold font-serif text-coral">
-                                    {formatPrice(minPrice)}
+                                    {formatPrice(priceWithTax(minPrice))}
                                 </span>
                             </div>
                         </Link>

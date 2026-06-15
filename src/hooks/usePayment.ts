@@ -46,7 +46,7 @@ export function usePayment() {
 
     const meals = useMemo(() => getMeals(), []);
 
-    const breakdown = usePriceBreakdown();
+    const breakdown = usePriceBreakdown(true);
 
     const handleApplyPromo = useCallback(
         (code: string) => {

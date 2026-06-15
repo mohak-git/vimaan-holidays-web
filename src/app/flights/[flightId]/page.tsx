@@ -6,7 +6,7 @@ import FareTierSelector from "@/components/flights/FareTierSelector";
 import FlightInfoCard from "@/components/flights/FlightInfoCard";
 import PriceBreakup from "@/components/flights/PriceBreakup";
 import SearchSummaryBar from "@/components/flights/SearchSummaryBar";
-import { CONVENIENCE_FEE, INSURANCE_PER_PERSON } from "@/config/constants";
+import { INSURANCE_PER_PERSON } from "@/config/constants";
 import { getAirlineByCode } from "@/lib/services/airlines";
 import { getAirportByCode } from "@/lib/services/airports";
 import { getAllFlights, getFlightById } from "@/lib/services/flights";
@@ -45,7 +45,7 @@ export default function FlightDetailPage() {
             insuranceAdded: false,
             insurancePerPerson: INSURANCE_PER_PERSON,
             promoDiscount: 0,
-            convenienceFee: CONVENIENCE_FEE,
+            convenienceFee: 0,
         });
     }, [flight, selectedFareState, totalPassengers]);
 

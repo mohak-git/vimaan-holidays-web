@@ -92,3 +92,11 @@
         transform: translateX(-50%);
     }
 }
+
+@media print {
+    body {
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
