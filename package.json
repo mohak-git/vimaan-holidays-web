@@ -9,12 +9,21 @@
         "lint": "eslint"
     },
     "dependencies": {
-        "@rive-app/react-webgl2": "^4.28.6",
+        "@hookform/resolvers": "^5.4.0",
+        "@rive-app/react-webgl2": "^4.29.1",
+        "clsx": "^2.1.1",
+        "date-fns": "^4.4.0",
         "framer-motion": "^12.40.0",
         "lucide-react": "^0.522.0",
         "next": "16.2.6",
+        "razorpay": "^2.9.6",
         "react": "19.2.4",
-        "react-dom": "19.2.4"
+        "react-dom": "19.2.4",
+        "react-hook-form": "^7.78.0",
+        "sonner": "^2.0.7",
+        "tailwind-merge": "^3.6.0",
+        "zod": "^4.4.3",
+        "zustand": "^5.0.14"
     },
     "devDependencies": {
         "@tailwindcss/postcss": "^4",

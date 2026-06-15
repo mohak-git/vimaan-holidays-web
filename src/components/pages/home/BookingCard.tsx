@@ -13,11 +13,13 @@ export default async function BookingCard({ category }: Props) {
 
             <SearchForms category={category} />
 
-            <div className="flex justify-center md:justify-end ">
-                <button className="w-full md:w-auto bg-coral hover:bg-coral-hover text-white text-lg font-semibold px-10 py-3 rounded-xl shadow-glow transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-hover hover:-translate-y-0.5">
-                    Search {category.charAt(0).toUpperCase() + category.slice(1)}
-                </button>
-            </div>
+            {category !== "flight" && (
+                <div className="flex justify-center md:justify-end ">
+                    <button className="w-full md:w-auto bg-coral hover:bg-coral-hover text-white text-lg font-semibold px-10 py-3 rounded-xl shadow-glow transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-hover hover:-translate-y-0.5">
+                        Search {category.charAt(0).toUpperCase() + category.slice(1)}
+                    </button>
+                </div>
+            )}
         </div>
     );
 }

@@ -9,7 +9,8 @@
 /build
 
 # env files
-.env*
+.env
+.env.local
 
 # vercel
 .vercel

@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Toaster from "@/components/Toaster";
 import { ReactNode } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -7,6 +8,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         <>
             <Header />
             {children}
+            <Toaster />
             <Footer />
         </>
     );

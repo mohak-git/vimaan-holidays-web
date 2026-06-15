@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
-import { Fraunces, Inter } from "next/font/google";
 import type { Metadata } from "next";
+import { Fraunces, Inter } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
 

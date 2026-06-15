@@ -58,6 +58,21 @@
     h6 {
         font-family: var(--font-serif);
     }
+
+    *::-webkit-scrollbar {
+        width: 10px;
+    }
+    *::-webkit-scrollbar-track {
+        background: var(--color-sand-dark);
+    }
+    *::-webkit-scrollbar-thumb {
+        background: var(--color-coral);
+        border-radius: 9999px;
+        border: 2px solid var(--color-sand-dark);
+    }
+    *::-webkit-scrollbar-thumb:hover {
+        background: var(--color-coral-hover);
+    }
 }
 
 @utility hide-scrollbar {
