@@ -12,6 +12,7 @@ import type { FareTierName, Flight } from "@/types/flights/flight";
 import type { FlightFilters } from "@/types/flights/search";
 import { ArrowLeft, Plane, SlidersHorizontal, X } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 
 function FlightBreadcrumb({ from, to }: { from: string; to: string }) {
     return (
@@ -137,7 +138,7 @@ function MobileFilterDrawer({
     );
 }
 
-export default function FlightResultsPage() {
+function FlightResultsContent() {
     const {
         from,
         to,
@@ -236,5 +237,13 @@ export default function FlightResultsPage() {
                 onFilterChange={handleFilterChange}
             />
         </div>
+    );
+}
+
+export default function FlightResultsPage() {
+    return (
+        <Suspense fallback={<LoadingState />}>
+            <FlightResultsContent />
+        </Suspense>
     );
 }
