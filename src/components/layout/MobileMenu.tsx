@@ -1,11 +1,11 @@
 "use client";
 
+import { DOWNLOAD_LINKS, NAV_LINKS } from "@/config/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { Download, User, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { DOWNLOAD_LINKS, NAV_LINKS } from "./constants";
 
 interface Props {
     isOpen: boolean;

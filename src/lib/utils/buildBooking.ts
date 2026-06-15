@@ -1,3 +1,4 @@
+import { CONVENIENCE_FEE } from "@/config/constants";
 import { generateBookingRef, generatePNR } from "@/lib/utils/generateBookingRef";
 import type {
     Booking,
@@ -6,7 +7,6 @@ import type {
     PassengerDetails,
     PriceBreakdown,
 } from "@/types/flights/booking";
-import { CONVENIENCE_FEE } from "@/types/flights/constants";
 import type { FareTierName, FlightBookingInfo } from "@/types/flights/flight";
 import type { FareType } from "@/types/flights/search";
 

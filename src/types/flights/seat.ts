@@ -1,4 +1,4 @@
-import { SEAT_STATUSES, SEAT_TYPES } from "./constants";
+import { SEAT_STATUSES, SEAT_TYPES } from "@/config/constants";
 
 export type SeatType = (typeof SEAT_TYPES)[number];
 export type SeatStatus = (typeof SEAT_STATUSES)[number];

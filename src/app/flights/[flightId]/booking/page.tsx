@@ -10,9 +10,9 @@ import FlightSummaryCard from "@/components/flights/FlightSummaryCard";
 import PassengerForm from "@/components/flights/PassengerForm";
 import PriceBreakup from "@/components/flights/PriceBreakup";
 import SavedTravellerModal from "@/components/flights/SavedTravellerModal";
+import { PASSENGER_TYPES } from "@/config/constants";
 import { useBookingForm } from "@/hooks/useBookingForm";
 import { countOfTypeUpTo, TYPE_LABEL } from "@/lib/utils/booking";
-import { PASSENGER_TYPES } from "@/types/flights/constants";
 
 function BookingPageContent() {
     const {

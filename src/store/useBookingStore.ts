@@ -1,7 +1,6 @@
+import { CONVENIENCE_FEE } from "@/config/constants";
 import { validatePromoCode } from "@/lib/services/promoCodes";
-import { calculateTotal } from "@/lib/utils/calculateFare";
 import type { ContactDetails, PassengerDetails } from "@/types/flights/booking";
-import { CONVENIENCE_FEE, INSURANCE_PER_PERSON } from "@/types/flights/constants";
 import type { FareTierName, FlightBookingInfo } from "@/types/flights/flight";
 import type { FareType } from "@/types/flights/search";
 import { create } from "zustand";
@@ -21,7 +20,6 @@ interface BookingState {
     insuranceAdded: boolean;
     promoCode: string;
     promoDiscount: number;
-    totalAmount: number;
     setFlight: (
         flightId: string,
         fare: FareTierName,
@@ -40,7 +38,6 @@ interface BookingState {
     toggleInsurance: () => void;
     applyPromo: (code: string, fareTypeContext: FareType) => boolean;
     removePromo: () => void;
-    calculateTotal: () => void;
     resetBooking: () => void;
 }
 
@@ -58,7 +55,6 @@ const initialState = {
     insuranceAdded: false,
     promoCode: "",
     promoDiscount: 0,
-    totalAmount: 0,
 };
 
 export const useBookingStore = create<BookingState>()(
@@ -115,28 +111,6 @@ export const useBookingStore = create<BookingState>()(
                 return true;
             },
             removePromo: () => set({ promoCode: "", promoDiscount: 0 }),
-
-            calculateTotal: () => {
-                const state = get();
-                const seatTotal = state.selectedSeats.reduce((sum, s) => sum + s.price, 0);
-                const mealTotal = state.selectedMeals.reduce((sum, m) => sum + m.price, 0);
-                const baggageTotal = state.extraBaggage.reduce((sum, b) => sum + b.price, 0);
-                const adults = state.passengers.length;
-
-                const breakdown = calculateTotal({
-                    farePrice: state.farePrice,
-                    adults,
-                    seatTotal,
-                    mealTotal,
-                    baggageTotal,
-                    insuranceAdded: state.insuranceAdded,
-                    insurancePerPerson: INSURANCE_PER_PERSON,
-                    promoDiscount: state.promoDiscount,
-                    convenienceFee: CONVENIENCE_FEE,
-                });
-
-                set({ totalAmount: breakdown.grandTotal });
-            },
             resetBooking: () => set({ ...initialState }),
         }),
         { name: "booking-storage" },

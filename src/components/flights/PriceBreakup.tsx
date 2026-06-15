@@ -1,74 +1,32 @@
-import { cn } from "@/lib/utils";
-import { formatPrice } from "@/lib/utils/formatPrice";
+import { PriceBreakup as GenericPriceBreakup } from "@/components/ui/PriceBreakup";
 import type { PriceBreakdown } from "@/types/flights/booking";
 
-interface Props {
+interface PriceBreakupProps {
     breakdown: PriceBreakdown;
     className?: string;
 }
 
-interface LineItem {
-    key: keyof PriceBreakdown;
-    label: string;
-    showIf?: (b: PriceBreakdown) => boolean;
-    highlight?: boolean;
-    invertSign?: boolean;
-}
+export default function PriceBreakup({ breakdown, className }: PriceBreakupProps) {
+    const lineItems = [
+        { key: "baseFare", label: "Base Fare", value: breakdown.baseFare },
+        { key: "taxes", label: "Taxes & Fees (18%)", value: breakdown.taxes },
+        {
+            key: "seatTotal",
+            label: "Seat Selection",
+            value: breakdown.seatTotal,
+        },
+        { key: "mealTotal", label: "Meals", value: breakdown.mealTotal },
+        { key: "baggageTotal", label: "Extra Baggage", value: breakdown.baggageTotal },
+        { key: "insurance", label: "Travel Insurance", value: breakdown.insurance },
+        { key: "convenienceFee", label: "Convenience Fee", value: breakdown.convenienceFee },
+        {
+            key: "promoDiscount",
+            label: "Promo Discount",
+            value: breakdown.promoDiscount,
+            highlight: true,
+            invertSign: true,
+        },
+    ];
 
-const lineItems: LineItem[] = [
-    { key: "baseFare", label: "Base Fare" },
-    { key: "taxes", label: "Taxes & Fees (18%)" },
-    { key: "seatTotal", label: "Seat Selection", showIf: (b) => b.seatTotal > 0 },
-    { key: "mealTotal", label: "Meals", showIf: (b) => b.mealTotal > 0 },
-    { key: "baggageTotal", label: "Extra Baggage", showIf: (b) => b.baggageTotal > 0 },
-    { key: "insurance", label: "Travel Insurance", showIf: (b) => b.insurance > 0 },
-    { key: "convenienceFee", label: "Convenience Fee" },
-    {
-        key: "promoDiscount",
-        label: "Promo Discount",
-        showIf: (b) => b.promoDiscount > 0,
-        highlight: true,
-        invertSign: true,
-    },
-];
-
-export default function PriceBreakup({ breakdown, className }: Props) {
-    return (
-        <div
-            className={cn("bg-white rounded-xl p-4 border border-sand-dark shadow-soft", className)}
-        >
-            <h3 className="font-semibold font-serif text-lg mb-4">Price Breakup</h3>
-
-            <div className="space-y-2 text-sm">
-                {lineItems.map((item) => {
-                    if (item.showIf && !item.showIf(breakdown)) return null;
-
-                    const value = breakdown[item.key] as number;
-
-                    return (
-                        <div
-                            key={item.key}
-                            className={cn(
-                                "flex justify-between",
-                                item.highlight && "text-green-600",
-                            )}
-                        >
-                            <span>{item.label}</span>
-                            <span className="font-medium">
-                                {item.invertSign ? "-" : ""}
-                                {formatPrice(value)}
-                            </span>
-                        </div>
-                    );
-                })}
-
-                <div className="border-t border-sand-dark pt-2 mt-2">
-                    <div className="flex justify-between text-lg font-bold">
-                        <span>Grand Total</span>
-                        <span className="text-coral">{formatPrice(breakdown.grandTotal)}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+    return <GenericPriceBreakup lineItems={lineItems} grandTotal={breakdown.grandTotal} className={className} />;
 }

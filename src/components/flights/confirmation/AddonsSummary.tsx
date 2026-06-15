@@ -1,29 +1,16 @@
-import { ArmchairIcon, Luggage, ShieldCheck, UtensilsCrossed } from "lucide-react";
 import type { BookingAddons } from "@/types/flights/booking";
+import { ArmchairIcon, Luggage, ShieldCheck, UtensilsCrossed } from "lucide-react";
 
 interface AddonsSummaryProps {
     addons: BookingAddons;
 }
 
 export default function AddonsSummary({ addons }: AddonsSummaryProps) {
-    const items = [
-        addons.seats.length > 0 && {
-            icon: ArmchairIcon,
-            text: `${addons.seats.length} seat(s) selected`,
-        },
-        addons.meals.length > 0 && {
-            icon: UtensilsCrossed,
-            text: `${addons.meals.length} meal(s) added`,
-        },
-        addons.extraBaggage > 0 && {
-            icon: Luggage,
-            text: `${addons.extraBaggage}kg extra baggage`,
-        },
-        addons.insurance && {
-            icon: ShieldCheck,
-            text: "Travel insurance added",
-        },
-    ].filter(Boolean) as { icon: React.ElementType; text: string }[];
+    const items: { icon: React.ElementType; text: string }[] = [];
+    if (addons.seats.length > 0) items.push({ icon: ArmchairIcon, text: `${addons.seats.length} seat(s) selected` });
+    if (addons.meals.length > 0) items.push({ icon: UtensilsCrossed, text: `${addons.meals.length} meal(s) added` });
+    if (addons.extraBaggage > 0) items.push({ icon: Luggage, text: `${addons.extraBaggage}kg extra baggage` });
+    if (addons.insurance) items.push({ icon: ShieldCheck, text: "Travel insurance added" });
 
     if (items.length === 0) return null;
 

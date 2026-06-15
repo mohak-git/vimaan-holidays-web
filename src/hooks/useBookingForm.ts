@@ -1,5 +1,6 @@
 "use client";
 
+import { CONVENIENCE_FEE, INSURANCE_PER_PERSON } from "@/config/constants";
 import type { PassengerFormData } from "@/lib/schemas/passenger";
 import { passengerSchema } from "@/lib/schemas/passenger";
 import { getSavedTravellers } from "@/lib/services/savedTravellers";
@@ -10,11 +11,10 @@ import {
     isDuplicate,
     TYPE_LABEL,
 } from "@/lib/utils/booking";
-import { calculateTotal } from "@/lib/utils/calculateFare";
+import { calculateTotal } from "@/lib/utils/pricing";
 import { useBookingStore } from "@/store/useBookingStore";
 import { useFlightSearchStore } from "@/store/useFlightSearchStore";
 import type { PassengerDetails, PassengerType } from "@/types/flights/booking";
-import { CONVENIENCE_FEE, INSURANCE_PER_PERSON } from "@/types/flights/constants";
 import type { SavedTraveller } from "@/types/user";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";

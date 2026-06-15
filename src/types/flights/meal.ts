@@ -1,4 +1,4 @@
-import { MEAL_TYPES } from "./constants";
+import { MEAL_TYPES } from "@/config/constants";
 
 export type MealType = (typeof MEAL_TYPES)[number];
 

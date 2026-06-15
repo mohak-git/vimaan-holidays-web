@@ -1,5 +1,5 @@
+import { AIRCRAFT_TYPES, FARE_TIER_NAMES, FLIGHT_TAGS } from "@/config/constants";
 import type { AirlineCode } from "./airline";
-import { AIRCRAFT_TYPES, FARE_TIER_NAMES, FLIGHT_TAGS } from "./constants";
 import type { FareType } from "./search";
 
 export type Aircraft = (typeof AIRCRAFT_TYPES)[number];

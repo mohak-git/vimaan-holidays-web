@@ -1,23 +1,16 @@
+import { formatTravellers } from "@/lib/utils/travellers";
 import type { FareType, TravelClass, Travellers } from "@/types/flights/search";
 import { format, parseISO } from "date-fns";
 import { ArrowRightLeft, Search } from "lucide-react";
 import Link from "next/link";
 
-interface Props {
+interface SearchSummaryBarProps {
     from: string;
     to: string;
     date: string;
     travellers: Travellers;
     travelClass: TravelClass;
     fareType: FareType;
-}
-
-function travellerSummary(t: Travellers): string {
-    const parts: string[] = [];
-    if (t.adults) parts.push(`${t.adults} ${t.adults === 1 ? "Adult" : "Adults"}`);
-    if (t.children) parts.push(`${t.children} ${t.children === 1 ? "Child" : "Children"}`);
-    if (t.infants) parts.push(`${t.infants} ${t.infants === 1 ? "Infant" : "Infants"}`);
-    return parts.join(", ");
 }
 
 export default function SearchSummaryBar({
@@ -27,7 +20,7 @@ export default function SearchSummaryBar({
     travellers,
     travelClass,
     fareType,
-}: Props) {
+}: SearchSummaryBarProps) {
     let formattedDate: string;
     try {
         formattedDate = format(parseISO(date), "d MMM yyyy");
@@ -57,7 +50,7 @@ export default function SearchSummaryBar({
                     <span className="text-xs sm:text-sm text-ink/70">{formattedDate}</span>
                     <span className="text-ink/30">|</span>
                     <span className="text-xs sm:text-sm text-ink/70">
-                        {travellerSummary(travellers)}
+                        {formatTravellers(travellers)}
                     </span>
                     <span className="text-ink/30">|</span>
                     <span className="text-xs sm:text-sm text-ink/70 capitalize">{travelClass}</span>

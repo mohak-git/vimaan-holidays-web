@@ -17,6 +17,4 @@ export function generatePNR(): string {
     return randomString(6);
 }
 
-export function generateCancellationRef(): string {
-    return `CNCL-${randomString(6)}`;
-}
+

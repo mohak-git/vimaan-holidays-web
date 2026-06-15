@@ -1,5 +1,5 @@
-import { DOWNLOAD_LINKS } from "@/components/constants";
-import { DownloadLink } from "@/components/types";
+import { DOWNLOAD_LINKS } from "@/config/constants";
+import { DownloadLink } from "@/config/types";
 import Link from "next/link";
 
 interface AppDownload extends DownloadLink {

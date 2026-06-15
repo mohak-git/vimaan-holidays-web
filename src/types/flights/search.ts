@@ -1,5 +1,5 @@
+import { FARE_TYPES, REFUND_TYPES, TIME_SLOTS, TRAVEL_CLASSES } from "@/config/constants";
 import type { AirlineCode } from "./airline";
-import { FARE_TYPES, REFUND_TYPES, TIME_SLOTS, TRAVEL_CLASSES } from "./constants";
 
 export type TravelClass = (typeof TRAVEL_CLASSES)[number];
 export type FareType = (typeof FARE_TYPES)[number];

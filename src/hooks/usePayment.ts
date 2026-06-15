@@ -1,13 +1,12 @@
 "use client";
 
-import { createOrder, useRazorpay, verifyPayment } from "@/hooks/useRazorpay";
+import { usePriceBreakdown } from "@/hooks/usePriceBreakdown";
+import { useRazorpay } from "@/hooks/useRazorpay";
+import { createOrder, verifyPayment } from "@/lib/razorpay/api";
 import { getMeals } from "@/lib/services/addons";
 import { buildBooking } from "@/lib/utils/buildBooking";
-import { calculateTotal } from "@/lib/utils/calculateFare";
 import { useBookingStore } from "@/store/useBookingStore";
 import { useUserStore } from "@/store/useUserStore";
-import type { PriceBreakdown } from "@/types/flights/booking";
-import { CONVENIENCE_FEE, INSURANCE_PER_PERSON } from "@/types/flights/constants";
 import type { FareTierName } from "@/types/flights/flight";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useMemo, useState } from "react";
@@ -38,7 +37,6 @@ export function usePayment() {
         promoDiscount,
         applyPromo,
         removePromo,
-        calculateTotal: recalcTotal,
         resetBooking,
     } = bookingStore;
 
@@ -46,48 +44,20 @@ export function usePayment() {
 
     const resolvedFlightId = flightId || (params.flightId as string);
 
-    const adults = passengers.length || 1;
     const meals = useMemo(() => getMeals(), []);
 
-    const breakdown = useMemo((): PriceBreakdown => {
-        const seatTotal = selectedSeats.reduce((s, seat) => s + seat.price, 0);
-        const mealTotal = selectedMeals.reduce((s, m) => s + m.price, 0);
-        const baggageTotal = extraBaggage.reduce((s, b) => s + b.price, 0);
-
-        return calculateTotal({
-            farePrice,
-            adults,
-            seatTotal,
-            mealTotal,
-            baggageTotal,
-            insuranceAdded,
-            insurancePerPerson: INSURANCE_PER_PERSON,
-            promoDiscount,
-            convenienceFee: CONVENIENCE_FEE,
-        });
-    }, [
-        farePrice,
-        passengers.length,
-        selectedSeats,
-        selectedMeals,
-        extraBaggage,
-        insuranceAdded,
-        promoDiscount,
-    ]);
+    const breakdown = usePriceBreakdown();
 
     const handleApplyPromo = useCallback(
         (code: string) => {
-            const result = applyPromo(code, fareType ?? "regular");
-            if (result) recalcTotal();
-            return result;
+            return applyPromo(code, fareType ?? "regular");
         },
-        [applyPromo, fareType, recalcTotal],
+        [applyPromo, fareType],
     );
 
     const handleRemovePromo = useCallback(() => {
         removePromo();
-        recalcTotal();
-    }, [removePromo, recalcTotal]);
+    }, [removePromo]);
 
     const handlePay = useCallback(async () => {
         if (!termsAccepted) {

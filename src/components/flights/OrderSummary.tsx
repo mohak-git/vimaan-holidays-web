@@ -17,9 +17,6 @@ interface OrderSummaryProps {
 }
 
 export default function OrderSummary({
-    flight,
-    fareTier,
-    fareType,
     passengers,
     selectedSeats,
     selectedMeals,
@@ -43,7 +40,7 @@ export default function OrderSummary({
                 <div className="mb-5">
                     <p className="text-xs text-ink/40 mb-3">Passengers</p>
                     <div className="grid gap-3">
-                        {passengers.map((p, i) => {
+                        {passengers.map((p) => {
                             const seat = selectedSeats.find((s) => s.passengerId === p.id);
                             const meal = selectedMeals.find((m) => m.passengerId === p.id);
                             const mealName = meal ? mealsById.get(meal.mealId) : undefined;

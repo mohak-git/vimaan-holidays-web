@@ -29,7 +29,7 @@ export default function ConfirmationPage() {
         );
     }
 
-    const { bookingRef, flight, pnr, addons, contact } = booking;
+    const { bookingRef, flight, addons, contact } = booking;
 
     return (
         <div className="min-h-screen bg-sand pt-24 pb-16">

@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout";
+import Layout from "@/components/layout/Layout";
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { ReactNode } from "react";

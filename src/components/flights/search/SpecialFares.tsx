@@ -1,7 +1,7 @@
 "use client";
 
-import { SPECIAL_FARES } from "@/components/pages/home/constants";
-import { FARE_LABEL_TO_VALUE } from "@/types/flights/constants";
+import { SPECIAL_FARES } from "@/components/home/constants";
+import { FARE_LABEL_TO_VALUE } from "@/config/constants";
 import type { FareType } from "@/types/flights/search";
 
 interface Props {

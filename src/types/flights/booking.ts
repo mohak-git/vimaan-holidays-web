@@ -1,5 +1,5 @@
+import { BOOKING_STATUSES, PASSENGER_TYPES, PAYMENT_METHODS } from "@/config/constants";
 import type { Person } from "../person";
-import { BOOKING_STATUSES, PASSENGER_TYPES, PAYMENT_METHODS } from "./constants";
 import type { FareTierName, FlightBookingInfo } from "./flight";
 import type { Meal } from "./meal";
 import type { FareType } from "./search";
@@ -30,6 +30,24 @@ export interface ContactDetails {
     email: string;
     phone: string;
     countryCode: string;
+}
+
+export interface SeatSelection {
+    passengerId: string;
+    seatId: string;
+    price: number;
+}
+
+export interface MealSelection {
+    passengerId: string;
+    mealId: string;
+    price: number;
+}
+
+export interface BaggageSelection {
+    passengerId: string;
+    baggageId: string;
+    price: number;
 }
 
 export interface PriceBreakdown {

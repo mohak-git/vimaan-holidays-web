@@ -6,16 +6,11 @@ import { useEffect, useState } from "react";
 
 export default function Loader() {
     const [isLoading, setIsLoading] = useState(true);
-    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
-        setIsMounted(true);
         const timer = setTimeout(() => setIsLoading(false), 1200);
-
         return () => clearTimeout(timer);
     }, []);
-
-    if (!isMounted) return null;
 
     return (
         <AnimatePresence mode="wait">

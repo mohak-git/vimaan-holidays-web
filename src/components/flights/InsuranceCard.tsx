@@ -1,8 +1,8 @@
 "use client";
 
+import { CONVENIENCE_FEE } from "@/config/constants";
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils/formatPrice";
-import { CONVENIENCE_FEE } from "@/types/flights/constants";
 import { Ambulance, Ban, Clock, Luggage } from "lucide-react";
 import { ComponentType, memo } from "react";
 

@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils/formatPrice";
+import { formatTravellers } from "@/lib/utils/travellers";
 import type { FareTierName, FlightBookingInfo } from "@/types/flights/flight";
 import { Calendar, Plane, Users } from "lucide-react";
 import { ReactNode } from "react";
@@ -54,20 +55,6 @@ function RouteVisual({ from, to, departureTime, arrivalTime }: FlightBookingInfo
     );
 }
 
-function formatTravellers(t?: TravellerCount, adultsFallback?: number): string {
-    if (t) {
-        const parts: string[] = [];
-        if (t.adults > 0) parts.push(`${t.adults} Adult${t.adults > 1 ? "s" : ""}`);
-        if ((t.children ?? 0) > 0)
-            parts.push(`${t.children} Child${(t.children ?? 0) > 1 ? "ren" : ""}`);
-        if ((t.infants ?? 0) > 0)
-            parts.push(`${t.infants} Infant${(t.infants ?? 0) > 1 ? "s" : ""}`);
-        return parts.join(", ");
-    }
-    const a = adultsFallback ?? 1;
-    return `${a} Adult${a > 1 ? "s" : ""}`;
-}
-
 export default function FlightSummaryCard({
     flight,
     fareTier,
@@ -77,7 +64,7 @@ export default function FlightSummaryCard({
     farePrice,
     className,
 }: FlightSummaryProps) {
-    const travellerLabel = formatTravellers(travellers, adults);
+    const travellerLabel = travellers ? formatTravellers(travellers) : `${adults} Adult${adults > 1 ? "s" : ""}`;
 
     return (
         <div

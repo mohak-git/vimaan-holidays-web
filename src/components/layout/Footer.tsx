@@ -1,6 +1,6 @@
+import { LEGAL_LINKS, NAV_COLUMNS, SOCIAL_LINKS } from "@/config/constants";
 import Image from "next/image";
 import Link from "next/link";
-import { LEGAL_LINKS, NAV_COLUMNS, SOCIAL_LINKS } from "./constants";
 
 export default function Footer() {
     return (

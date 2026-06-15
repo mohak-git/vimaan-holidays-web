@@ -1,15 +1,15 @@
-import Loader from "@/components/Loader";
-import AppDownloadBanner from "@/components/pages/home/AppDownloadBanner";
-import BrandLogos from "@/components/pages/home/BrandLogos";
-import FeaturedTrips from "@/components/pages/home/FeaturedTrips";
-import FeatureList from "@/components/pages/home/FeatureList";
-import Gallery from "@/components/pages/home/Gallery";
-import Hero from "@/components/pages/home/Hero";
-import Newsletter from "@/components/pages/home/Newsletter";
-import PopularDestinations from "@/components/pages/home/PopularDestinations";
-import PopularRoutes from "@/components/pages/home/PopularRoutes";
-import Testimonials from "@/components/pages/home/Testimonials";
-import { CATEGORIES, Category } from "@/components/pages/home/types";
+import AppDownloadBanner from "@/components/home/AppDownloadBanner";
+import BrandLogos from "@/components/home/BrandLogos";
+import FeaturedTrips from "@/components/home/FeaturedTrips";
+import FeatureList from "@/components/home/FeatureList";
+import Gallery from "@/components/home/Gallery";
+import Hero from "@/components/home/Hero";
+import Newsletter from "@/components/home/Newsletter";
+import PopularDestinations from "@/components/home/PopularDestinations";
+import PopularRoutes from "@/components/home/PopularRoutes";
+import Testimonials from "@/components/home/Testimonials";
+import { CATEGORIES, Category } from "@/components/home/types";
+import Loader from "@/components/layout/Loader";
 import { redirect } from "next/navigation";
 
 type Props = { searchParams: Promise<{ category?: string }> };

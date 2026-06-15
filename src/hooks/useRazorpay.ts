@@ -3,8 +3,6 @@
 import { loadScript } from "@/lib/razorpay/loader";
 import type { OrderOptions, PaymentResponse } from "@/types/razorpay";
 import { useCallback } from "react";
-export { createOrder, verifyPayment } from "@/lib/razorpay/api";
-export type { OrderOptions, PaymentResponse };
 
 interface OpenRazorpayOptions extends OrderOptions {
     onFailed?: (event: { code: string; description: string }) => void;

@@ -1,8 +1,6 @@
 import { getBaggageOptions, getMeals, getSeatMap } from "@/lib/services/addons";
-import { calculateTotal } from "@/lib/utils/calculateFare";
 import { useBookingStore } from "@/store/useBookingStore";
-import type { PriceBreakdown } from "@/types/flights/booking";
-import { CONVENIENCE_FEE, INSURANCE_PER_PERSON } from "@/types/flights/constants";
+import { usePriceBreakdown } from "@/hooks/usePriceBreakdown";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
@@ -29,7 +27,6 @@ export function useBookingAddons() {
         setExtraBaggage,
         removeExtraBaggage,
         toggleInsurance,
-        calculateTotal: recalcTotal,
     } = useBookingStore();
 
     const resolvedFlightId = flightId || flightIdFromUrl;
@@ -47,23 +44,7 @@ export function useBookingAddons() {
 
     const activePassenger = passengers[safeActiveIdx];
 
-    const breakdown = useMemo((): PriceBreakdown => {
-        const seatTotal = selectedSeats.reduce((s, seat) => s + seat.price, 0);
-        const mealTotal = selectedMeals.reduce((s, m) => s + m.price, 0);
-        const baggageTotal = extraBaggage.reduce((s, b) => s + b.price, 0);
-
-        return calculateTotal({
-            farePrice,
-            adults: passengers.length || 1,
-            seatTotal,
-            mealTotal,
-            baggageTotal,
-            insuranceAdded,
-            insurancePerPerson: INSURANCE_PER_PERSON,
-            promoDiscount: 0,
-            convenienceFee: CONVENIENCE_FEE,
-        });
-    }, [farePrice, passengers.length, selectedSeats, selectedMeals, extraBaggage, insuranceAdded]);
+    const breakdown = usePriceBreakdown();
 
     const passengerLabel = useCallback(
         (idx: number) => {
@@ -134,9 +115,8 @@ export function useBookingAddons() {
     );
 
     const handleContinue = useCallback(() => {
-        recalcTotal();
         router.push(`/flights/${resolvedFlightId}/booking/payment`);
-    }, [recalcTotal, router, resolvedFlightId]);
+    }, [router, resolvedFlightId]);
 
     return {
         resolvedFlightId,

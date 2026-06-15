@@ -1,10 +1,11 @@
+import { AirlineBadge } from "@/components/ui/AirlineBadge";
 import { cn } from "@/lib/utils";
 import type { Airline } from "@/types/flights/airline";
 import type { Airport } from "@/types/flights/airport";
 import type { Flight } from "@/types/flights/flight";
 import { Clock, Plane } from "lucide-react";
 
-interface Props {
+interface FlightInfoCardProps {
     flight: Flight;
     airline: Airline | undefined;
     fromAirport: Airport | undefined;
@@ -20,18 +21,13 @@ export default function FlightInfoCard({
     toAirport,
     date,
     className,
-}: Props) {
+}: FlightInfoCardProps) {
     return (
         <div
             className={cn("bg-white rounded-xl shadow-soft border border-sand-dark p-6", className)}
         >
             <div className="flex items-center gap-3 mb-6">
-                <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold shrink-0"
-                    style={{ backgroundColor: airline?.color || "#666" }}
-                >
-                    {airline?.logo || flight.airline}
-                </div>
+                <AirlineBadge code={flight.airline} />
                 <div>
                     <h1 className="text-xl font-bold font-serif">
                         {airline?.name || flight.airline}

@@ -2,9 +2,9 @@
 
 import BookingStepper from "@/components/flights/BookingStepper";
 import FlightSummaryCard from "@/components/flights/FlightSummaryCard";
+import OrderSummary from "@/components/flights/OrderSummary";
 import PriceBreakup from "@/components/flights/PriceBreakup";
 import PromoCodeInput from "@/components/flights/PromoCodeInput";
-import OrderSummary from "@/components/flights/OrderSummary";
 import { usePayment } from "@/hooks/usePayment";
 import { formatPrice } from "@/lib/utils/formatPrice";
 import { Loader2 } from "lucide-react";

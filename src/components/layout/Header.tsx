@@ -1,10 +1,10 @@
 "use client";
 
+import { DOWNLOAD_LINKS, NAV_LINKS } from "@/config/constants";
 import { Menu, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { DOWNLOAD_LINKS, NAV_LINKS } from "./constants";
 import MobileMenu from "./MobileMenu";
 
 export default function Header() {

@@ -3,10 +3,10 @@
 import BookingStepper from "@/components/flights/BookingStepper";
 import FlightSummaryCard from "@/components/flights/FlightSummaryCard";
 import PriceBreakup from "@/components/flights/PriceBreakup";
-import BaggageSection from "@/components/pages/addons/BaggageSection";
-import InsuranceSection from "@/components/pages/addons/InsuranceSection";
-import MealSection from "@/components/pages/addons/MealSection";
-import SeatSection from "@/components/pages/addons/SeatSection";
+import BaggageSection from "@/components/flights/addons/BaggageSection";
+import InsuranceSection from "@/components/flights/addons/InsuranceSection";
+import MealSection from "@/components/flights/addons/MealSection";
+import SeatSection from "@/components/flights/addons/SeatSection";
 import { CollapsibleSection } from "@/components/ui/CollapsibleSection";
 import { useBookingAddons } from "@/hooks/useBookingAddons";
 import { ArmchairIcon, Luggage, UtensilsCrossed } from "lucide-react";

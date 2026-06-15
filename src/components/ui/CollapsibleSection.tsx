@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 interface CollapsibleSectionProps {
     title: string;
@@ -20,7 +20,14 @@ export function CollapsibleSection({
     children,
 }: CollapsibleSectionProps) {
     const [open, setOpen] = useState(defaultOpen);
+    const [contentHeight, setContentHeight] = useState(0);
     const contentRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (contentRef.current) {
+            setContentHeight(contentRef.current.scrollHeight);
+        }
+    }, [open]);
 
     return (
         <div className="bg-white rounded-xl shadow-soft border border-sand-dark">
@@ -41,9 +48,11 @@ export function CollapsibleSection({
             </button>
             <div
                 className="overflow-hidden transition-[max-height] duration-300 ease-in-out"
-                style={{ maxHeight: open ? contentRef.current?.scrollHeight : 0 }}
+                style={{ maxHeight: open ? contentHeight : 0 }}
             >
-                <div ref={contentRef} className="px-6 pb-6">{children}</div>
+                <div ref={contentRef} className="px-6 pb-6">
+                    {children}
+                </div>
             </div>
         </div>
     );

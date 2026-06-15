@@ -1,24 +1,17 @@
+import { StopsBadge } from "@/components/ui/StopsBadge";
 import { getAllAirlines } from "@/lib/services/airlines";
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils/formatPrice";
+import { minFarePrice } from "@/lib/utils/flight";
 import type { Flight } from "@/types/flights/flight";
 import Link from "next/link";
 
-interface Props {
+interface AlternativeFlightsProps {
     flights: Flight[];
     currentFlightId: string;
 }
 
-function StopsLabel({ stops }: { stops: number }) {
-    if (stops === 0) return <span className="text-xs text-green-600 font-medium">Non-stop</span>;
-    return (
-        <span className="text-xs text-amber-600 font-medium">
-            {stops} stop{stops > 1 ? "s" : ""}
-        </span>
-    );
-}
-
-export default function AlternativeFlights({ flights, currentFlightId }: Props) {
+export default function AlternativeFlights({ flights, currentFlightId }: AlternativeFlightsProps) {
     const airlines = getAllAirlines();
     const alternatives = flights.filter((f) => f.id !== currentFlightId).slice(0, 3);
 
@@ -32,11 +25,7 @@ export default function AlternativeFlights({ flights, currentFlightId }: Props) 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {alternatives.map((flight) => {
                     const airline = airlines.find((a) => a.code === flight.airline);
-                    const minPrice = Math.min(
-                        flight.fares.saver.price,
-                        flight.fares.value.price,
-                        flight.fares.flex.price,
-                    );
+                    const minPrice = minFarePrice(flight);
 
                     return (
                         <Link
@@ -71,7 +60,7 @@ export default function AlternativeFlights({ flights, currentFlightId }: Props) 
                             </div>
 
                             <div className="flex items-center justify-between">
-                                <StopsLabel stops={flight.stops} />
+                                <StopsBadge stops={flight.stops} />
                                 <span className="text-lg font-bold font-serif text-coral">
                                     {formatPrice(minPrice)}
                                 </span>

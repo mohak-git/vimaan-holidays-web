@@ -1,3 +1,4 @@
+import { publicEnv } from "@/config/env";
 import { getRazorpayInstance } from "@/lib/razorpay/config";
 import { createOrderSchema } from "@/lib/razorpay/validations";
 import { NextRequest } from "next/server";
@@ -18,7 +19,7 @@ export async function POST(request: NextRequest) {
         const razorpay = getRazorpayInstance();
         const order = await razorpay.orders.create(parsed.data);
 
-        return Response.json({ ...order, key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID });
+        return Response.json({ ...order, key_id: publicEnv.NEXT_PUBLIC_RAZORPAY_KEY_ID });
     } catch (error) {
         console.error("[create-order] Razorpay order creation failed:", error);
         return Response.json({ error: "Failed to create order" }, { status: 500 });

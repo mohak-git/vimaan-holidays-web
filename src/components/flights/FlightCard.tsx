@@ -1,43 +1,25 @@
 "use client";
 
-import { getAllAirlines } from "@/lib/services/airlines";
+"use client";
+
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils/formatPrice";
+import { minFarePrice, FARE_TIER_KEYS } from "@/lib/utils/flight";
+import { AirlineBadge } from "@/components/ui/AirlineBadge";
+import { StopsBadge } from "@/components/ui/StopsBadge";
 import type { FareTierName, Flight } from "@/types/flights/flight";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, ChevronUp, Plane } from "lucide-react";
 import { useState } from "react";
 
-interface Props {
+interface FlightCardProps {
     flight: Flight;
     isSelected: boolean;
     onSelect: (flight: Flight, fare: FareTierName) => void;
 }
 
-function AirlineBadge({ code }: { code: string }) {
-    const airlines = getAllAirlines();
-    const airline = airlines.find((a) => a.code === code);
-    if (!airline) return <span className="text-xs font-bold">{code}</span>;
-    return (
-        <div
-            className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-sm"
-            style={{ backgroundColor: airline.color }}
-        >
-            {airline.logo}
-        </div>
-    );
-}
-
-function StopsBadge({ stops }: { stops: number }) {
-    if (stops === 0) return <span className="text-xs text-green-600 font-medium">Non-stop</span>;
-    if (stops === 1) return <span className="text-xs text-amber-600 font-medium">1 Stop</span>;
-    return <span className="text-xs text-red-600 font-medium">{stops} Stops</span>;
-}
-
-export default function FlightCard({ flight, isSelected, onSelect }: Props) {
+export default function FlightCard({ flight, isSelected, onSelect }: FlightCardProps) {
     const [expanded, setExpanded] = useState(false);
-    const airlines = getAllAirlines();
-    const airline = airlines.find((a) => a.code === flight.airline);
 
     return (
         <div
@@ -52,7 +34,7 @@ export default function FlightCard({ flight, isSelected, onSelect }: Props) {
                         <AirlineBadge code={flight.airline} />
                         <div>
                             <p className="font-semibold text-sm">
-                                {airline?.name || flight.airline}
+                                {flight.airline}
                             </p>
                             <p className="text-xs text-ink/50">{flight.flightNumber}</p>
                         </div>
@@ -86,13 +68,7 @@ export default function FlightCard({ flight, isSelected, onSelect }: Props) {
 
                     <div className="flex flex-col items-end gap-2 min-w-[140px]">
                         <p className="text-lg font-bold font-serif text-coral">
-                            {formatPrice(
-                                Math.min(
-                                    flight.fares.saver.price,
-                                    flight.fares.value.price,
-                                    flight.fares.flex.price,
-                                ),
-                            )}
+                            {formatPrice(minFarePrice(flight))}
                         </p>
                         <button
                             onClick={() => setExpanded(!expanded)}
@@ -120,20 +96,14 @@ export default function FlightCard({ flight, isSelected, onSelect }: Props) {
                     >
                         <div className="border-t border-sand-dark px-4 md:px-5 py-4">
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                                {(
-                                    Object.entries(flight.fares) as [
-                                        string,
-                                        typeof flight.fares.saver,
-                                    ][]
-                                ).map(([key, fare]) => {
-                                    const fareKey = key as "saver" | "value" | "flex";
-                                    const isSelectedFare = isSelected;
+                                {FARE_TIER_KEYS.map((key) => {
+                                    const fare = flight.fares[key];
                                     return (
                                         <div
                                             key={key}
                                             className={cn(
                                                 "border rounded-xl p-4 transition-all",
-                                                isSelectedFare
+                                                isSelected
                                                     ? "border-coral bg-coral/5"
                                                     : "border-sand-dark hover:border-coral/50",
                                             )}
@@ -164,15 +134,15 @@ export default function FlightCard({ flight, isSelected, onSelect }: Props) {
                                                 </p>
                                             </div>
                                             <button
-                                                onClick={() => onSelect(flight, fareKey)}
+                                                onClick={() => onSelect(flight, key)}
                                                 className={cn(
                                                     "w-full mt-3 py-2 rounded-lg text-sm font-semibold transition-all",
-                                                    isSelectedFare
+                                                    isSelected
                                                         ? "bg-coral text-white"
                                                         : "bg-ink text-white hover:bg-ink-light",
                                                 )}
                                             >
-                                                {isSelectedFare ? "Selected" : "Select"}
+                                                {isSelected ? "Selected" : "Select"}
                                             </button>
                                         </div>
                                     );

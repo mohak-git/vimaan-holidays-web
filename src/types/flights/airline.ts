@@ -1,4 +1,4 @@
-import { AIRLINE_CODES } from "./constants";
+import { AIRLINE_CODES } from "@/config/constants";
 
 export type AirlineCode = (typeof AIRLINE_CODES)[number];
 

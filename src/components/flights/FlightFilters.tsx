@@ -1,8 +1,5 @@
 "use client";
 
-import { useFlightFilters } from "@/hooks/useFlightFilters";
-import { cn } from "@/lib/utils";
-import type { AirlineCode } from "@/types/flights/airline";
 import {
     REFUND_TYPE_LABELS,
     REFUND_TYPES,
@@ -10,7 +7,10 @@ import {
     STOP_VALUES,
     TIME_SLOT_LABELS,
     TIME_SLOTS,
-} from "@/types/flights/constants";
+} from "@/config/constants";
+import { useFlightFilters } from "@/hooks/useFlightFilters";
+import { cn } from "@/lib/utils";
+import type { AirlineCode } from "@/types/flights/airline";
 import type { FlightFilters as FilterType } from "@/types/flights/search";
 import { SlidersHorizontal } from "lucide-react";
 import { ReactNode } from "react";

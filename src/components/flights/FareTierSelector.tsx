@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/utils/formatPrice";
+import { getFareEntries } from "@/lib/utils/flight";
 import type { FareTier, FareTierName } from "@/types/flights/flight";
 import { ArmchairIcon, BadgeCheck, Luggage, RotateCcw, UtensilsCrossed } from "lucide-react";
 
@@ -23,7 +24,7 @@ export default function FareTierSelector({ fares, selectedFare, adults, onSelect
         <div className="bg-white rounded-xl border border-sand-dark shadow-soft p-4">
             <h3 className="font-semibold font-serif text-lg mb-4">Select Fare</h3>
             <div className="space-y-3">
-                {(Object.entries(fares) as [FareTierName, FareTier][]).map(([key, fare]) => {
+                {getFareEntries(fares).map(([key, fare]) => {
                     const isSelected = selectedFare === key;
                     const meta = fareMeta[key];
 

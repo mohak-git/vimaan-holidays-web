@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeftIcon, ArrowRightIcon, LucideIcon } from "lucide-react";
-import { ComponentProps } from "react";
+import { ComponentProps, useRef } from "react";
 
 type Props = { total: number };
 type ButtonProps = ComponentProps<"button"> & { icon: LucideIcon };
@@ -19,12 +19,12 @@ function Button({ icon: Icon, ...props }: ButtonProps) {
 }
 
 export default function TestimonialNav({ total }: Props) {
-    let currentIndex = 0;
+    const currentIndexRef = useRef(0);
     const handleScroll = (direction: "prev" | "next") => {
-        if (direction === "next") currentIndex = (currentIndex + 1) % total;
-        else currentIndex = (currentIndex - 1 + total) % total;
+        if (direction === "next") currentIndexRef.current = (currentIndexRef.current + 1) % total;
+        else currentIndexRef.current = (currentIndexRef.current - 1 + total) % total;
 
-        const target = document.getElementById(`testimonial-card-${currentIndex}`);
+        const target = document.getElementById(`testimonial-card-${currentIndexRef.current}`);
         if (target) target.scrollIntoView({ behavior: "smooth", block: "nearest" });
     };
 

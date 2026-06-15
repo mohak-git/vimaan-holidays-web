@@ -1,8 +1,8 @@
 "use client";
 
+import { TRAVEL_CLASSES, TRAVEL_CLASS_LABELS } from "@/config/constants";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { cn } from "@/lib/utils";
-import { TRAVEL_CLASSES, TRAVEL_CLASS_LABELS } from "@/types/flights/constants";
 import type { TravelClass, Travellers } from "@/types/flights/search";
 import { Minus, Plus, Users } from "lucide-react";
 import { useState } from "react";
