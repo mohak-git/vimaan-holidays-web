@@ -20,3 +20,7 @@ export interface DownloadLink {
     href: string;
     icon: ComponentType<SVGProps<SVGSVGElement>>;
 }
+
+export interface ContactLink extends Link {
+    icon: LucideIcon | ComponentType<SVGProps<SVGSVGElement>>;
+}

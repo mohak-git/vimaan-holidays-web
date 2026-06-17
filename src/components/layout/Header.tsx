@@ -29,7 +29,7 @@ export default function Header() {
     return (
         <>
             <header
-                className={`fixed top-0 left-0 right-0 z-5 transition-all duration-300 print:hidden ${
+                className={`fixed top-8 left-0 right-0 z-5 transition-all duration-300 print:hidden ${
                     scrolled ? "backdrop-blur-md py-3 shadow-lg" : "bg-transparent py-5"
                 }`}
             >

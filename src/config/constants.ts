@@ -1,6 +1,16 @@
-import { AppStoreIcon, GooglePlayIcon } from "@/components/layout/Icons";
-import { Compass, Facebook, Home, Instagram, Luggage, Twitter, Users, Youtube } from "lucide-react";
-import { DownloadLink, IconLink, Link, NavColumn } from "./types";
+import { AppStoreIcon, GooglePlayIcon, WhatsAppIcon } from "@/components/layout/Icons";
+import {
+    Compass,
+    Facebook,
+    Home,
+    Instagram,
+    Luggage,
+    Phone,
+    Twitter,
+    Users,
+    Youtube,
+} from "lucide-react";
+import { ContactLink, DownloadLink, IconLink, Link, NavColumn } from "./types";
 
 export const SOCIAL_LINKS: IconLink[] = [
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
@@ -60,6 +70,13 @@ export const DOWNLOAD_LINKS: readonly DownloadLink[] = [
     { label: "Google Play", href: "#", icon: GooglePlayIcon },
     { label: "App Store", href: "#", icon: AppStoreIcon },
 ];
+
+export const CONTACT_LINKS: readonly ContactLink[] = [
+    { icon: Phone, href: "tel:+91 85218 67596", label: "Call Support" },
+    { icon: WhatsAppIcon, href: "https://wa.me/+918521867596", label: "WhatsApp Support" },
+];
+
+export const SITE_TAGLINE = "India's premium boutique travel agency";
 
 // ─── Travel & domain constants ───────────────────────────────────────────────
 

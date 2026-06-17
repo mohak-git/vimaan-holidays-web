@@ -1,3 +1,4 @@
+import { FOOTER_BRAND_LOGOS } from "@/components/home/constants";
 import { LEGAL_LINKS, NAV_COLUMNS, SOCIAL_LINKS } from "@/config/constants";
 import Image from "next/image";
 import Link from "next/link";
@@ -88,8 +89,20 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom bar */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-sand/40">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-sand/40 md:*:w-1/3">
                     <p>&copy; 2026 Vimaan Holidays. All rights reserved.</p>
+
+                    <div className="flex items-center justify-center gap-2 flex-wrap">
+                        {FOOTER_BRAND_LOGOS.map(({ brand, src }) => (
+                            <Image
+                                src={src}
+                                alt={brand}
+                                width={100}
+                                height={30}
+                                className="h-8 w-auto"
+                            />
+                        ))}
+                    </div>
 
                     <nav className="flex items-center gap-6" aria-label="Legal">
                         {LEGAL_LINKS.map(({ label, href }) => (

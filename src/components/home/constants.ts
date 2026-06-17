@@ -335,3 +335,15 @@ export const BRAND_LOGOS = [
     },
     { brand: "Kayak", src: "https://www.logo.wine/a/logo/Kayak.com/Kayak.com-Logo.wine.svg" },
 ] as const satisfies readonly BrandLogo[];
+
+export const FOOTER_BRAND_LOGOS = [
+    {
+        brand: "UPI",
+        src: "https://www.logo.wine/a/logo/Unified_Payments_Interface/Unified_Payments_Interface-Logo.wine.svg",
+    },
+    { brand: "Visa", src: "https://www.logo.wine/a/logo/Visa_Inc./Visa_Inc.-Logo.wine.svg" },
+    {
+        brand: "MasterCard",
+        src: "https://www.logo.wine/a/logo/Mastercard/Mastercard-Logo.wine.svg",
+    },
+] as const satisfies readonly BrandLogo[];

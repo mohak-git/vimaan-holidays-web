@@ -129,7 +129,7 @@ export default function FlightsForm() {
                 <button
                     type="button"
                     onClick={handleSearch}
-                    className="w-full md:w-auto bg-coral hover:bg-coral-hover text-white text-lg font-semibold px-10 py-3 rounded-xl shadow-glow transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-hover hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
+                    className="w-full md:w-auto bg-linear-to-bl from-coral/50 to-coral-hover to-75% text-white text-lg font-semibold px-10 py-3 rounded-xl shadow-glow transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral-hover hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
                 >
                     <Search className="w-5 h-5 shrink-0" />
                     Search Flights
