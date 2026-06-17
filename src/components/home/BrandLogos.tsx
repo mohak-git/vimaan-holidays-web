@@ -23,7 +23,10 @@ export default function BrandLogos() {
     return (
         <section className="w-full bg-sand py-15" aria-labelledby={HEADING_ID}>
             <div className="mx-auto max-w-7xl flex flex-col gap-12 px-6">
-                <SectionHeader title="Trusted by Top Brands Worldwide" />
+                <SectionHeader
+                    title="Trusted by Top Brands Worldwide"
+                    description="We seamlessly integrate with global travel inventory to provide you with options from the world's best providers."
+                />
 
                 <div className="relative w-full overflow-hidden">
                     <ul

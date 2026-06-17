@@ -1,16 +1,18 @@
 import { AppStoreIcon, GooglePlayIcon, WhatsAppIcon } from "@/components/layout/Icons";
 import {
     Compass,
+    CreditCard,
     Facebook,
     Home,
     Instagram,
     Luggage,
     Phone,
+    ShoppingBag,
     Twitter,
     Users,
     Youtube,
 } from "lucide-react";
-import { ContactLink, DownloadLink, IconLink, Link, NavColumn } from "./types";
+import { DownloadLink, IconLink, Link, NavColumn, QuickLink } from "./types";
 
 export const SOCIAL_LINKS: IconLink[] = [
     { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
@@ -71,9 +73,19 @@ export const DOWNLOAD_LINKS: readonly DownloadLink[] = [
     { label: "App Store", href: "#", icon: AppStoreIcon },
 ];
 
-export const CONTACT_LINKS: readonly ContactLink[] = [
-    { icon: Phone, href: "tel:+91 85218 67596", label: "Call Support" },
-    { icon: WhatsAppIcon, href: "https://wa.me/+918521867596", label: "WhatsApp Support" },
+export const CONTACT_LINKS: readonly QuickLink[] = [
+    { icon: Phone, href: "tel:+91 85218 67596", label: "Call Support", shortLabel: "Call" },
+    {
+        icon: WhatsAppIcon,
+        href: "https://wa.me/+918521867596",
+        label: "WhatsApp Support",
+        shortLabel: "WhatsApp",
+    },
+];
+
+export const PROMO_LINKS: readonly QuickLink[] = [
+    { icon: CreditCard, href: "/offers", label: "Travel Card Offers", shortLabel: "Offers" },
+    { icon: ShoppingBag, href: "/expo", label: "Shopping Expo", shortLabel: "Shopping" },
 ];
 
 export const SITE_TAGLINE = "India's premium boutique travel agency";

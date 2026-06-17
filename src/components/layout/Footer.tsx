@@ -95,6 +95,7 @@ export default function Footer() {
                     <div className="flex items-center justify-center gap-2 flex-wrap">
                         {FOOTER_BRAND_LOGOS.map(({ brand, src }) => (
                             <Image
+                                key={brand}
                                 src={src}
                                 alt={brand}
                                 width={100}

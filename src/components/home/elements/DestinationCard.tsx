@@ -23,8 +23,8 @@ function Thumb({ src, alt, priority }: Thumb) {
 
 function Price({ price }: Price) {
     return (
-        <div className="flex items-baseline justify-end gap-1">
-            <span className="font-serif text-lg sm:group-hover:text-xl leading-none transition-all duration-500 group-hover:text-coral">
+        <div className="flex items-baseline justify-end gap-1 bg-coral p-1 rounded-md">
+            <span className="font-serif text-xl sm:group-hover:text-2xl leading-none transition-all duration-500">
                 &#8377; {price}
             </span>
             <span className="text-[8px] tracking-[0.2em] uppercase text-white/50">/pp</span>
@@ -36,7 +36,7 @@ function Arrow() {
     return (
         <div className="-translate-x-4 transition-transform duration-500 ease-out group-hover:translate-x-0">
             <div className="bg-white/10 backdrop-blur-md rounded-full p-2 border border-white/25 opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
-                <ArrowUpRight size={16} strokeWidth={2} aria-hidden="true" />
+                <ArrowUpRight size={20} strokeWidth={2} aria-hidden="true" />
             </div>
         </div>
     );
@@ -49,7 +49,7 @@ function Info({ location, title, subtitle }: Info) {
                 {location}
             </p>
 
-            <h3 className="text-xl sm:text-2xl font-serif font-medium tracking-wide transform transition-transform duration-500 ease-out group-hover:-translate-y-1">
+            <h3 className="text-2xl sm:text-3xl font-serif font-bold tracking-wide transform transition-transform duration-500 ease-out group-hover:-translate-y-1">
                 {title}
             </h3>
 

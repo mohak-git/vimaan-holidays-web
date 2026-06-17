@@ -92,7 +92,7 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
                                 <Link
                                     key={label}
                                     href={href}
-                                    className="flex items-center gap-3 rounded-lg px-3 py-3 text-white/90 transition-colors hover:bg-white/5 hover:text-coral focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral"
+                                    className="flex items-center gap-3 rounded-lg px-3 py-3 text-coral bg-white/5 transition-colors hover:bg-transparent hover:text-white/90 "
                                     onClick={handleClose}
                                 >
                                     <Icon className="size-4 shrink-0" />
@@ -114,10 +114,10 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
                                             href={href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition-all duration-300 hover:border-coral/40 hover:bg-coral/10 hover:text-white"
+                                            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 text-coral px-4 py-2 text-sm transition-all duration-300 hover:border-coral/40 hover:bg-coral/10 hover:text-white"
                                             onClick={handleClose}
                                         >
-                                            <Icon className="h-4 w-4 text-white/60" />
+                                            <Icon className="h-4 w-4 text-coral" />
                                             <span className="font-medium">{label}</span>
                                         </Link>
                                     ))}

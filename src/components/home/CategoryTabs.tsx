@@ -15,13 +15,15 @@ function Tab({ id, label, icon: Icon, active }: TabProps) {
         <Link
             href={`?category=${id}`}
             scroll={false}
-            className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral ${
+            className={`relative flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-bold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral ${
                 active ? "text-ink" : "text-white/80 hover:text-white hover:bg-white/5"
             }`}
         >
             {active && <AnimatedPill />}
-            <span className="relative z-1 flex items-center gap-2">
-                <Icon className={`w-4 h-4 ${active ? "text-coral" : "opacity-80"}`} />
+            <span
+                className={`relative z-1 flex items-center gap-2  ${active ? "text-white" : "opacity-80"}`}
+            >
+                <Icon className="w-4 h-4" />
                 {label}
             </span>
         </Link>

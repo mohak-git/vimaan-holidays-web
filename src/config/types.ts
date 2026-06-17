@@ -21,6 +21,7 @@ export interface DownloadLink {
     icon: ComponentType<SVGProps<SVGSVGElement>>;
 }
 
-export interface ContactLink extends Link {
+export interface QuickLink extends Link {
     icon: LucideIcon | ComponentType<SVGProps<SVGSVGElement>>;
+    shortLabel: string;
 }
