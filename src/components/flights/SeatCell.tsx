@@ -86,7 +86,7 @@ function SeatTooltip({
     exitRow: boolean;
 }) {
     return (
-        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-ink text-white text-xs whitespace-nowrap shadow-lg z-10 pointer-events-none">
+        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 rounded bg-ink text-white text-xs whitespace-nowrap shadow-lg z-1 pointer-events-none">
             {seatId} - {type}
             {extraLegroom && " (Extra legroom)"}
             {exitRow && " (Exit row)"}

@@ -21,6 +21,7 @@ next-env.d.ts
 
 # dev
 .agents
+opencode.json
 .vscode
 extras
 samples.md

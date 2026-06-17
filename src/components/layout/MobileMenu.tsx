@@ -1,8 +1,9 @@
 "use client";
 
+import UserButton from "@/components/auth/UserButton";
 import { DOWNLOAD_LINKS, NAV_LINKS } from "@/config/constants";
 import { AnimatePresence, motion } from "framer-motion";
-import { Download, User, X } from "lucide-react";
+import { Download, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -14,7 +15,6 @@ interface Props {
 
 export default function MobileMenu({ isOpen, handleClose }: Props) {
     const closeRef = useRef<HTMLButtonElement>(null);
-    const drawerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!isOpen) return;
@@ -39,7 +39,7 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-5 lg:hidden" ref={drawerRef}>
+                <div className="fixed inset-0 z-5 lg:hidden">
                     <motion.div
                         className="absolute inset-0 bg-ink/60 backdrop-blur-sm"
                         variants={{ hidden: { opacity: 0 }, visible: { opacity: 1 } }}
@@ -60,10 +60,10 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
                         transition={{ duration: 0.2 }}
                         aria-label="Mobile Navigation"
                     >
-                        <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+                        <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
                             <Link
                                 href="/"
-                                className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral rounded-lg p-1"
+                                className="flex items-center gap-2 rounded-lg p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral"
                                 aria-label="Vimaan Holidays Home"
                                 onClick={handleClose}
                             >
@@ -80,19 +80,19 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
                                 ref={closeRef}
                                 type="button"
                                 onClick={handleClose}
-                                className="p-2 text-white hover:text-coral transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral cursor-pointer"
+                                className="cursor-pointer p-2 text-white transition-colors hover:text-coral focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral"
                                 aria-label="Close menu"
                             >
                                 <X className="size-6" />
                             </button>
                         </div>
 
-                        <div className="flex flex-col justify-around h-60 px-4">
+                        <div className="flex flex-col gap-1 px-4 pt-4">
                             {NAV_LINKS.map(({ label, icon: Icon, href }) => (
                                 <Link
                                     key={label}
                                     href={href}
-                                    className="flex items-center gap-3 border-b px-3 py-3 text-white/90 hover:text-coral hover:bg-white/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral"
+                                    className="flex items-center gap-3 rounded-lg px-3 py-3 text-white/90 transition-colors hover:bg-white/5 hover:text-coral focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral"
                                     onClick={handleClose}
                                 >
                                     <Icon className="size-4 shrink-0" />
@@ -101,36 +101,32 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
                             ))}
                         </div>
 
-                        <div className="p-4 border-t border-white/10">
-                            <p className="text-[10px] font-semibold uppercase tracking-widest text-white/40 mb-3 flex items-center gap-2">
-                                <Download className="size-3" />
-                                Get the App
-                            </p>
-                            <div className="flex gap-4">
-                                {DOWNLOAD_LINKS.map(({ label, href, icon: Icon }) => (
-                                    <Link
-                                        key={label}
-                                        href={href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex-1 flex items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/80 transition-all duration-300 hover:border-coral/40 hover:bg-coral/10 hover:text-white"
-                                        onClick={handleClose}
-                                    >
-                                        <Icon className="h-4 w-4 text-white/60" />
-                                        <span className="font-medium">{label}</span>
-                                    </Link>
-                                ))}
+                        <div className="mt-auto p-4">
+                            <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+                                <p className="mb-4 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-white/40">
+                                    <Download className="size-3" />
+                                    Get the App
+                                </p>
+                                <div className="flex gap-4">
+                                    {DOWNLOAD_LINKS.map(({ label, href, icon: Icon }) => (
+                                        <Link
+                                            key={label}
+                                            href={href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition-all duration-300 hover:border-coral/40 hover:bg-coral/10 hover:text-white"
+                                            onClick={handleClose}
+                                        >
+                                            <Icon className="h-4 w-4 text-white/60" />
+                                            <span className="font-medium">{label}</span>
+                                        </Link>
+                                    ))}
+                                </div>
                             </div>
                         </div>
 
-                        <div className="absolute bottom-0 w-full px-5 py-4 border-t border-white/10">
-                            <button
-                                type="button"
-                                className="w-full flex items-center justify-center gap-2 bg-coral hover:bg-coral-hover text-white px-4 py-3 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                            >
-                                <User className="size-4" />
-                                <span>Sign In</span>
-                            </button>
+                        <div className="border-t border-white/10 px-5 py-4">
+                            <UserButton variant="mobile" />
                         </div>
                     </motion.nav>
                 </div>

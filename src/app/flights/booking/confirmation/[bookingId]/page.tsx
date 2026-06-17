@@ -43,12 +43,11 @@ function ConfirmationSkeleton() {
 
 export default function ConfirmationPage() {
     const params = useParams();
-    const [hydrated, setHydrated] = useState(false);
+    const [hydrated, setHydrated] = useState(() => useUserStore.persist.hasHydrated());
     const { bookingHistory } = useUserStore();
 
     useEffect(() => {
         const unsub = useUserStore.persist.onFinishHydration(() => setHydrated(true));
-        if (useUserStore.persist.hasHydrated()) setHydrated(true);
         return unsub;
     }, []);
 

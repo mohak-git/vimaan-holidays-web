@@ -1,7 +1,8 @@
 "use client";
 
+import UserButton from "@/components/auth/UserButton";
 import { DOWNLOAD_LINKS, NAV_LINKS } from "@/config/constants";
-import { Menu, User } from "lucide-react";
+import { Menu } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
@@ -88,13 +89,7 @@ export default function Header() {
 
                         <div className="w-px h-5 bg-white/20 mx-2" aria-hidden="true" />
 
-                        <button
-                            type="button"
-                            className="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral cursor-pointer"
-                        >
-                            <User className="w-4 h-4" />
-                            <span>Sign In</span>
-                        </button>
+                        <UserButton variant="desktop" />
                     </nav>
 
                     {/* Mobile Menu Toggle */}
