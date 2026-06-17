@@ -1,27 +1,38 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import dynamic from "next/dynamic";
-import { type ComponentType } from "react";
-import { type Category } from "./types";
+import { useEffect, useState, type ComponentType } from "react";
+import BookingCardSkeleton from "./BookingCardSkeleton";
+import type { Category } from "./types";
 
-const FORMS: Record<Category, ComponentType> = {
-    flight: dynamic(() => import("./forms/FlightsForm"), { ssr: false }),
-    hotel: dynamic(() => import("./forms/HotelsForm"), { ssr: false }),
-    bus: dynamic(() => import("./forms/BusesForm"), { ssr: false }),
-    cab: dynamic(() => import("./forms/CabsForm"), { ssr: false }),
-    tour: dynamic(() => import("./forms/ToursForm"), { ssr: false }),
-    activity: dynamic(() => import("./forms/ActivitiesForm"), { ssr: false }),
-    visa: dynamic(() => import("./forms/VisaForm"), { ssr: false }),
-    cruise: dynamic(() => import("./forms/CruiseForm"), { ssr: false }),
+const FORM_IMPORTS: Record<Category, () => Promise<{ default: ComponentType }>> = {
+    flight: () => import("./forms/FlightsForm"),
+    hotel: () => import("./forms/HotelsForm"),
+    bus: () => import("./forms/BusesForm"),
+    cab: () => import("./forms/CabsForm"),
+    tour: () => import("./forms/ToursForm"),
+    activity: () => import("./forms/ActivitiesForm"),
+    visa: () => import("./forms/VisaForm"),
+    cruise: () => import("./forms/CruiseForm"),
 };
 
-interface Props {
-    category: Category;
-}
+export default function SearchForms({ category }: { category: Category }) {
+    const [Form, setForm] = useState<ComponentType | null>(null);
 
-export default function SearchForms({ category }: Props) {
-    const ActiveForm = FORMS[category] ?? FORMS.flight;
+    useEffect(() => {
+        let active = true;
+        setForm(null);
+
+        FORM_IMPORTS[category]().then(({ default: Form }) => {
+            if (active) setForm(() => Form);
+        });
+
+        return () => {
+            active = false;
+        };
+    }, [category]);
+
+    if (!Form) return <BookingCardSkeleton />;
 
     return (
         <div className="relative min-h-35 flex flex-col justify-center w-full">
@@ -34,7 +45,7 @@ export default function SearchForms({ category }: Props) {
                     transition={{ duration: 0.2, ease: "easeInOut" }}
                     className="w-full"
                 >
-                    <ActiveForm />
+                    <Form />
                 </motion.div>
             </AnimatePresence>
         </div>

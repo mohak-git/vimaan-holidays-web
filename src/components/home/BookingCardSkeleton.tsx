@@ -22,26 +22,9 @@ export default function BookingCardSkeleton() {
     ];
 
     return (
-        <div className="w-full bg-sand rounded-3xl p-4 md:p-6 shadow-soft flex flex-col gap-6">
-            {/* Tabs */}
-            <div className="bg-ink rounded-2xl p-2 overflow-x-auto hide-scrollbar">
-                <div className="flex justify-center items-center gap-2 min-w-max bg-white/5 p-1.5 rounded-full border border-white/10 animate-pulse">
-                    {[24, 20, 20, 20, 20, 20, 20, 20].map((w, i) => (
-                        <div
-                            key={i}
-                            className={`h-10 rounded-full ${
-                                i === 0 ? "bg-white/15" : "bg-white/5"
-                            }`}
-                            style={{ width: `${w * 4}px` }}
-                        />
-                    ))}
-                </div>
-            </div>
-
+        <>
             {/* Form */}
             <div className="flex flex-col gap-4">
-                <div className="w-64 h-10 bg-black/5 rounded-xl animate-pulse" />
-
                 <div className="flex flex-col md:flex-row gap-4 md:gap-0 border border-black/10 rounded-2xl p-4 md:p-2 bg-white animate-pulse">
                     {fields.map(([w1, w2, w3], i) => (
                         <div key={i} className="flex flex-1 items-center">
@@ -69,6 +52,6 @@ export default function BookingCardSkeleton() {
             <div className="flex justify-center md:justify-end">
                 <div className="w-full md:w-48 h-12 bg-coral/30 rounded-xl shadow-glow animate-pulse" />
             </div>
-        </div>
+        </>
     );
 }

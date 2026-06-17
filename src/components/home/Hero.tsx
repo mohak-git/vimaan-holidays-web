@@ -1,7 +1,5 @@
 import Image from "next/image";
-import { Suspense } from "react";
 import BookingCard from "./BookingCard";
-import BookingCardSkeleton from "./BookingCardSkeleton";
 import { BG_IMG_URL } from "./constants";
 import SearchBar from "./SearchBar";
 import { Category } from "./types";
@@ -42,9 +40,7 @@ export default function Hero({ category }: Props) {
             <Background />
 
             <div className="relative z-1 mx-auto flex w-full max-w-6xl flex-col items-center gap-10 pt-20">
-                <Suspense fallback={<BookingCardSkeleton />}>
-                    <BookingCard category={category} />
-                </Suspense>
+                <BookingCard category={category} />
                 <div className="flex flex-col items-center justify-center">
                     <Headline />
                     <SearchBar />

@@ -73,6 +73,15 @@
     *::-webkit-scrollbar-thumb:hover {
         background: var(--color-coral-hover);
     }
+
+    button,
+    a,
+    input,
+    textarea,
+    select,
+    [tabindex]:not([tabindex="-1"]) {
+        @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-coral;
+    }
 }
 
 @utility hide-scrollbar {
