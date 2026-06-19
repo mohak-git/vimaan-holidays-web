@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
         remotePatterns: [
             { hostname: "images.unsplash.com", protocol: "https", pathname: "/**" },
             { hostname: "framerusercontent.com", protocol: "https", pathname: "/**" },
+            { hostname: "img.magnific.com", protocol: "https", pathname: "/**" },
         ],
     },
 };

@@ -51,7 +51,7 @@ function NewsletterImages() {
 
 export default function Newsletter() {
     return (
-        <section className="w-full bg-red-50 py-10 px-6" aria-labelledby={SECTION_ID}>
+        <section className="w-full bg-stone-900 py-10 px-6" aria-labelledby={SECTION_ID}>
             <div className="mx-auto w-full max-w-7xl flex flex-col items-center justify-between rounded-3xl bg-white/90 md:flex-row gap-10 px-6 py-10 sm:px-10 lg:px-20 lg:py-15">
                 <div className="flex w-full max-w-md md:max-w-lg lg:max-w-xl flex-col items-start gap-8 lg:gap-12">
                     <div className="flex flex-col items-start gap-3">

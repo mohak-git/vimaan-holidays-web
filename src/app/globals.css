@@ -8,6 +8,7 @@
     --brand-sand-dark: #ebe3d5;
     --brand-coral: #d4af37;
     --brand-coral-hover: #c49f27;
+    --brand-dark-sandal: #cc875d;
 
     /* Shadows */
     --shadow-soft-elevation: 0 10px 40px -10px rgba(14, 31, 42, 0.08);
@@ -25,6 +26,7 @@
     --color-sand-dark: var(--brand-sand-dark);
     --color-coral: var(--brand-coral);
     --color-coral-hover: var(--brand-coral-hover);
+    --color-dark-sandal: var(--brand-dark-sandal);
 
     /* Fonts */
     --font-sans: var(--font-inter);

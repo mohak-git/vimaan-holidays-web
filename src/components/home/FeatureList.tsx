@@ -21,7 +21,7 @@ function Feature({ icon: Icon, title, body }: Feature) {
 
 export default function FeatureList() {
     return (
-        <section className="w-full py-20" aria-labelledby={HEADING_ID}>
+        <section className="w-full bg-dark-sandal py-20" aria-labelledby={HEADING_ID}>
             <div className="mx-auto max-w-7xl flex flex-col gap-12 px-6">
                 <SectionHeader title="Why Choose Us" />
 
