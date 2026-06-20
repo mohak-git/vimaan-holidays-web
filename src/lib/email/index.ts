@@ -1,13 +1,9 @@
 import "server-only";
 import { sendEmail } from "./send";
 import { buildResetPasswordHtml, buildVerifyEmailHtml } from "./templates";
-import type {
-    EmailResult,
-    SendPasswordResetEmailParams,
-    SendVerificationEmailParams,
-} from "./types";
+import type { SendPasswordResetEmailParams, SendVerificationEmailParams } from "./types";
 
-export function sendVerificationEmail(params: SendVerificationEmailParams): Promise<EmailResult> {
+export function sendVerificationEmail(params: SendVerificationEmailParams): Promise<void> {
     const { recipient, verificationUrl } = params;
     const htmlContent = buildVerifyEmailHtml({ verificationUrl, userName: recipient.name });
 
@@ -19,7 +15,7 @@ export function sendVerificationEmail(params: SendVerificationEmailParams): Prom
     });
 }
 
-export function sendPasswordResetEmail(params: SendPasswordResetEmailParams): Promise<EmailResult> {
+export function sendPasswordResetEmail(params: SendPasswordResetEmailParams): Promise<void> {
     const { recipient, resetUrl } = params;
     const htmlContent = buildResetPasswordHtml({ resetUrl, userName: recipient.name });
 

@@ -32,7 +32,7 @@ export function useSignInForm() {
         });
 
         if (error) {
-            toast.error(error.message);
+            toast.error(error.message || "Failed to sign in");
             return;
         }
 

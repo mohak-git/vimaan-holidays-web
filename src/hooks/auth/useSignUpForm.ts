@@ -5,12 +5,11 @@ import { authClient } from "@/lib/auth/authClient";
 import { signUpSchema, type SignUpData } from "@/lib/schemas/auth";
 import { getSafeRedirect } from "@/lib/utils/redirect";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 export function useSignUpForm() {
-    const router = useRouter();
     const searchParams = useSearchParams();
     const redirectTo = getSafeRedirect(searchParams.get("redirect"));
 
@@ -18,6 +17,7 @@ export function useSignUpForm() {
         register,
         handleSubmit,
         formState: { errors, isSubmitting },
+        reset,
     } = useForm<SignUpData>({ resolver: zodResolver(signUpSchema) });
 
     const { isGoogleLoading, signIn: onGoogleSignIn } = useGoogleSignIn(redirectTo);
@@ -37,9 +37,8 @@ export function useSignUpForm() {
             return;
         }
 
-        toast.success("Account created successfully");
-        router.replace(redirectTo);
-        router.refresh();
+        toast.success("Account created! Check your email to verify your account.");
+        reset();
     }
 
     return { register, handleSubmit, errors, isLoading, isSubmitting, onSubmit, onGoogleSignIn };

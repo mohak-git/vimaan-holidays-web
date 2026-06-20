@@ -19,7 +19,3 @@ export interface SendPasswordResetEmailParams {
     recipient: EmailRecipient;
     resetUrl: string;
 }
-
-type SuccesResult = { success: true; messageId: string };
-type FailureResult = { success: false; error: string };
-export type EmailResult = SuccesResult | FailureResult;

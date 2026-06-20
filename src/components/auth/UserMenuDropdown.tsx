@@ -1,19 +1,21 @@
 "use client";
 
 import { useUserMenu } from "@/hooks/auth/useUserMenu";
-import { LogOut } from "lucide-react";
+import { KeyRound, Loader2, LogOut } from "lucide-react";
+import Link from "next/link";
 import { UserAvatar } from "./UserAvatar";
-import { UserButtonProps } from "./UserButton";
+import type { UserButtonProps } from "./UserButton";
 
 interface UserMenuDropdownProps {
     name: string;
     email: string;
     image?: string | null | undefined;
     variant: UserButtonProps["variant"];
+    onClose?: () => void;
 }
 
-export function UserMenuDropdown({ name, email, image, variant }: UserMenuDropdownProps) {
-    const { open, ref, toggle, signOut } = useUserMenu();
+export function UserMenuDropdown({ name, email, image, variant, onClose }: UserMenuDropdownProps) {
+    const { open, ref, toggle, signOut, signingOut } = useUserMenu(onClose);
 
     if (variant === "mobile") {
         return (
@@ -26,12 +28,26 @@ export function UserMenuDropdown({ name, email, image, variant }: UserMenuDropdo
                     </div>
                 </div>
 
-                <button
-                    onClick={signOut}
+                <Link
+                    href="/change-password"
+                    onClick={onClose}
                     className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 px-4 py-2.5 text-sm text-white/70 transition-colors hover:border-coral/40 hover:bg-coral/10 hover:text-white"
                 >
-                    <LogOut className="h-4 w-4" />
-                    Sign Out
+                    <KeyRound className="h-4 w-4" />
+                    Change password
+                </Link>
+
+                <button
+                    onClick={signOut}
+                    disabled={signingOut}
+                    className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 px-4 py-2.5 text-sm text-white/70 transition-colors hover:border-coral/40 hover:bg-coral/10 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    {signingOut ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                        <LogOut className="h-4 w-4" />
+                    )}
+                    {signingOut ? "Signing out..." : "Sign Out"}
                 </button>
             </div>
         );
@@ -59,13 +75,28 @@ export function UserMenuDropdown({ name, email, image, variant }: UserMenuDropdo
                         <p className="truncate text-xs text-ink/50">{email}</p>
                     </div>
                     <div className="p-1">
-                        <button
-                            onClick={signOut}
+                        <Link
+                            href="/change-password"
                             role="menuitem"
+                            onClick={onClose}
                             className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-ink/70 transition-colors hover:bg-sand hover:text-ink"
                         >
-                            <LogOut className="h-4 w-4" />
-                            Sign out
+                            <KeyRound className="h-4 w-4" />
+                            Change password
+                        </Link>
+
+                        <button
+                            onClick={signOut}
+                            disabled={signingOut}
+                            role="menuitem"
+                            className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-ink/70 transition-colors hover:bg-sand hover:text-ink disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {signingOut ? (
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : (
+                                <LogOut className="h-4 w-4" />
+                            )}
+                            {signingOut ? "Signing out..." : "Sign out"}
                         </button>
                     </div>
                 </div>

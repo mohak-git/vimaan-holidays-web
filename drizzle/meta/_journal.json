@@ -8,6 +8,13 @@
       "when": 1781599547668,
       "tag": "0000_worthless_sasquatch",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1781952975511,
+      "tag": "0001_happy_firebrand",
+      "breakpoints": true
     }
   ]
 }

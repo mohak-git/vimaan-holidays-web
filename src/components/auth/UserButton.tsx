@@ -7,6 +7,7 @@ import { UserMenuDropdown } from "./UserMenuDropdown";
 
 export interface UserButtonProps {
     variant: "desktop" | "mobile";
+    onClose?: () => void;
 }
 
 function LoadingState({ variant }: UserButtonProps) {
@@ -33,20 +34,20 @@ const variantStyles: Record<UserButtonProps["variant"], string> = {
     mobile: "flex w-full items-center justify-center gap-2 rounded-lg bg-coral px-4 py-3 text-sm text-white transition-colors hover:bg-coral-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
 };
 
-function SignInButton({ variant }: UserButtonProps) {
+function SignInButton({ variant, onClose }: UserButtonProps) {
     return (
-        <Link href="/sign-in" className={variantStyles[variant]}>
+        <Link href="/sign-in" className={variantStyles[variant]} onClick={onClose}>
             <User className="h-4 w-4" />
             <span>Sign In</span>
         </Link>
     );
 }
 
-export default function UserButton({ variant }: UserButtonProps) {
+export default function UserButton({ variant, onClose }: UserButtonProps) {
     const { data: session, isPending } = authClient.useSession();
 
     if (isPending) return <LoadingState variant={variant} />;
-    if (!session) return <SignInButton variant={variant} />;
+    if (!session) return <SignInButton variant={variant} onClose={onClose} />;
 
     return (
         <UserMenuDropdown
@@ -54,6 +55,7 @@ export default function UserButton({ variant }: UserButtonProps) {
             email={session.user.email}
             image={session.user.image}
             variant={variant}
+            onClose={onClose}
         />
     );
 }

@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const signInSchema = z.object({
     email: z.email("Invalid email address"),
-    password: z.string().min(8, "Password is required"),
+    password: z.string().min(1, "Password is required"),
 });
 
 export const signUpSchema = z.object({
@@ -25,7 +25,23 @@ export const resetSchema = z
         path: ["confirmPassword"],
     });
 
+export const changePasswordSchema = z
+    .object({
+        currentPassword: z.string().min(1, "Current password is required"),
+        newPassword: z.string().min(8, "New password must be at least 8 characters"),
+        confirmPassword: z.string(),
+    })
+    .refine((data) => data.newPassword === data.confirmPassword, {
+        message: "Passwords do not match",
+        path: ["confirmPassword"],
+    })
+    .refine((data) => data.currentPassword !== data.newPassword, {
+        message: "New password must be different from current password",
+        path: ["newPassword"],
+    });
+
 export type SignInData = z.infer<typeof signInSchema>;
 export type SignUpData = z.infer<typeof signUpSchema>;
 export type EmailResetData = z.infer<typeof emailResetSchema>;
 export type ResetData = z.infer<typeof resetSchema>;
+export type ChangePasswordData = z.infer<typeof changePasswordSchema>;

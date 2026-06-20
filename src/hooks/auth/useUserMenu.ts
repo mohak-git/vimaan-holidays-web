@@ -4,10 +4,12 @@ import { useClickOutside } from "@/hooks/useClickOutside";
 import { authClient } from "@/lib/auth/authClient";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { toast } from "sonner";
 
-export function useUserMenu() {
+export function useUserMenu(onClose?: () => void) {
     const router = useRouter();
     const [open, setOpen] = useState(false);
+    const [signingOut, setSigningOut] = useState(false);
     const ref = useClickOutside<HTMLDivElement>(useCallback(() => setOpen(false), []));
 
     useEffect(() => {
@@ -26,10 +28,20 @@ export function useUserMenu() {
     }
 
     async function signOut() {
-        await authClient.signOut();
-        router.push("/");
-        router.refresh();
+        setSigningOut(true);
+        const { error } = await authClient.signOut({
+            fetchOptions: {
+                onSuccess: () => {
+                    onClose?.();
+                    router.push("/");
+                },
+            },
+        });
+        if (error) {
+            toast.error(error.message || "Failed to sign out. Please try again.");
+            setSigningOut(false);
+        }
     }
 
-    return { open, ref, toggle, signOut };
+    return { open, ref, toggle, signOut, signingOut };
 }

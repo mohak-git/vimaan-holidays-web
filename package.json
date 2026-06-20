@@ -16,6 +16,7 @@
         "@getbrevo/brevo": "^5.0.4",
         "@hookform/resolvers": "^5.4.0",
         "@rive-app/react-webgl2": "^4.29.1",
+        "@vercel/functions": "^3.7.1",
         "better-auth": "^1.6.18",
         "clsx": "^2.1.1",
         "date-fns": "^4.4.0",

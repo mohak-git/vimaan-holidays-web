@@ -126,7 +126,7 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
                         </div>
 
                         <div className="border-t border-white/10 px-5 py-4">
-                            <UserButton variant="mobile" />
+                            <UserButton variant="mobile" onClose={handleClose} />
                         </div>
                     </motion.nav>
                 </div>
