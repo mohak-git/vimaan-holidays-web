@@ -17,7 +17,7 @@ function SkeletonBlock({ className }: { className?: string }) {
 
 function ConfirmationSkeleton() {
     return (
-        <div className="min-h-screen bg-sand pt-24 pb-16">
+        <div className="min-h-screen bg-sand pt-32 pb-16">
             <div className="max-w-4xl mx-auto px-4 md:px-8 space-y-6">
                 <SkeletonBlock className="h-48 rounded-2xl" />
                 <SkeletonBlock className="h-80 rounded-2xl" />
@@ -57,7 +57,7 @@ export default function ConfirmationPage() {
 
     if (!booking) {
         return (
-            <div className="min-h-screen bg-sand pt-24 flex items-center justify-center">
+            <div className="min-h-screen bg-sand pt-32 flex items-center justify-center">
                 <div className="text-center">
                     <h2 className="text-2xl font-serif font-bold text-ink/60 mb-2">
                         Booking not found
@@ -73,7 +73,7 @@ export default function ConfirmationPage() {
     const { bookingRef, flight, addons, contact } = booking;
 
     return (
-        <div className="min-h-screen bg-sand pt-24 pb-16">
+        <div className="min-h-screen bg-sand pt-32 pb-16">
             <div className="max-w-4xl mx-auto px-4 md:px-8">
                 <div className="print:hidden">
                     <BookingHero bookingRef={bookingRef} email={contact.email} />

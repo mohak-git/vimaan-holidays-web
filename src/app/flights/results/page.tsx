@@ -162,7 +162,7 @@ function FlightResultsContent() {
     } = useFlightResults();
 
     return (
-        <div className="min-h-screen bg-sand pt-24 pb-16">
+        <div className="min-h-screen bg-sand pt-32 pb-16">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <FlightBreadcrumb from={from} to={to} />
 

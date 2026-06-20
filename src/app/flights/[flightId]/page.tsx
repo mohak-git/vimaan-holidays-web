@@ -51,7 +51,7 @@ export default function FlightDetailPage() {
 
     if (!flight) {
         return (
-            <div className="min-h-screen bg-sand pt-24 flex items-center justify-center">
+            <div className="min-h-screen bg-sand pt-32 flex items-center justify-center">
                 <div className="text-center">
                     <h2 className="text-2xl font-serif font-bold text-ink/60 mb-2">
                         Flight not found
@@ -96,7 +96,7 @@ export default function FlightDetailPage() {
     };
 
     return (
-        <div className="min-h-screen bg-sand pt-24 pb-16">
+        <div className="min-h-screen bg-sand pt-32 pb-16">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 <nav className="flex items-center gap-2 text-sm text-ink/50 mb-4">
                     <Link
