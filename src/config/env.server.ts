@@ -11,6 +11,11 @@ const serverSchema = z.object({
     DATABASE_URL: z.url("DATABASE_URL must be a valid connection string"),
 
     RAZORPAY_KEY_SECRET: z.string().min(1, "Razorpay Key Secret is required"),
+
+    BREVO_API_KEY: z.string().min(1, "Brevo API key is required"),
+    BREVO_SENDER_EMAIL: z.email("Brevo sender email must be a valid email"),
+    BREVO_REPLY_TO_EMAIL: z.email("Brevo reply to email must be a valid email"),
+    BREVO_SENDER_NAME: z.string().min(1, "Brevo sender name is required"),
 });
 
 export const serverEnv = serverSchema.parse({
@@ -23,4 +28,9 @@ export const serverEnv = serverSchema.parse({
     DATABASE_URL: process.env.DATABASE_URL,
 
     RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
+
+    BREVO_API_KEY: process.env.BREVO_API_KEY,
+    BREVO_SENDER_EMAIL: process.env.BREVO_SENDER_EMAIL,
+    BREVO_REPLY_TO_EMAIL: process.env.BREVO_REPLY_TO_EMAIL,
+    BREVO_SENDER_NAME: process.env.BREVO_SENDER_NAME,
 });

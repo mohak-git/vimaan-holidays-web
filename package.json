@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@better-auth/drizzle-adapter": "^1.6.18",
+        "@getbrevo/brevo": "^5.0.4",
         "@hookform/resolvers": "^5.4.0",
         "@rive-app/react-webgl2": "^4.29.1",
         "better-auth": "^1.6.18",
