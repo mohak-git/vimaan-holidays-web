@@ -1,4 +1,4 @@
-import Layout from "@/components/layout/Layout";
+import Toaster from "@/components/layout/Toaster";
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { ReactNode } from "react";
@@ -18,7 +18,8 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     return (
         <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
             <body className="min-h-screen overflow-x-hidden">
-                <Layout>{children}</Layout>
+                {children}
+                <Toaster />
             </body>
         </html>
     );
