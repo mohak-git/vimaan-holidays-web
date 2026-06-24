@@ -2,6 +2,7 @@
 
 import { Field, inputClass } from "@/components/ui/Field";
 import { passengerSchema, type PassengerFormData } from "@/lib/schemas/passenger";
+import { GENDER_OPTIONS, TITLE_OPTIONS } from "@/lib/schemas/traveller";
 import type { PassengerType } from "@/types/flights/booking";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash2 } from "lucide-react";
@@ -19,9 +20,6 @@ interface Props {
     onFillFromSaved?: () => void;
     defaultValues?: Partial<PassengerFormData>;
 }
-
-const TITLES = ["Mr", "Ms", "Mrs", "Dr"] as const;
-const GENDERS = ["Male", "Female", "Other"] as const;
 
 const TYPE_LABEL: Record<PassengerType, string> = {
     adult: "Adult",
@@ -50,11 +48,11 @@ export default function PassengerForm({
     } = useForm<PassengerFormData>({
         resolver: zodResolver(passengerSchema),
         defaultValues: {
-            title: "",
+            title: "Mr",
             firstName: "",
             lastName: "",
             dateOfBirth: "",
-            gender: "",
+            gender: "Male",
             nationality: "Indian",
             phone: "",
             email: "",
@@ -114,7 +112,7 @@ export default function PassengerForm({
                 <Field label="Title" error={errors.title?.message} required>
                     <select {...register("title")} className={inputClass}>
                         <option value="">Select</option>
-                        {TITLES.map((t) => (
+                        {TITLE_OPTIONS.map((t) => (
                             <option key={t} value={t}>
                                 {t}
                             </option>
@@ -133,7 +131,7 @@ export default function PassengerForm({
                 <Field label="Gender" error={errors.gender?.message} required>
                     <select {...register("gender")} className={inputClass}>
                         <option value="">Select</option>
-                        {GENDERS.map((g) => (
+                        {GENDER_OPTIONS.map((g) => (
                             <option key={g} value={g}>
                                 {g}
                             </option>

@@ -1,6 +1,7 @@
-import { savedTravellers as mockSavedTravellers } from "@/lib/mock/savedTravellers";
+import { useUserStore } from "@/store/useUserStore";
 import type { SavedTraveller } from "@/types/user";
 
 export function getSavedTravellers(): SavedTraveller[] {
-    return mockSavedTravellers;
+    const { savedTravellers } = useUserStore();
+    return savedTravellers.length > 0 ? savedTravellers : [];
 }

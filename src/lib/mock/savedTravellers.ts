@@ -1,4 +1,4 @@
-import { SavedTraveller } from "@/types/user";
+import type { SavedTraveller } from "@/types/user";
 
 export const savedTravellers: SavedTraveller[] = [
     {

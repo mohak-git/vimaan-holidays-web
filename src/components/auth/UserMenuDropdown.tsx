@@ -1,8 +1,10 @@
 "use client";
 
-import { useUserMenu } from "@/hooks/auth/useUserMenu";
+import { useSignOut } from "@/hooks/auth/useSignOut";
+import { useClickOutside } from "@/hooks/useClickOutside";
 import { LayoutDashboard, Loader2, LogOut } from "lucide-react";
 import Link from "next/link";
+import { useCallback, useState } from "react";
 import { UserAvatar } from "./UserAvatar";
 import type { UserButtonProps } from "./UserButton";
 
@@ -15,7 +17,13 @@ interface UserMenuDropdownProps {
 }
 
 export function UserMenuDropdown({ name, email, image, variant, onClose }: UserMenuDropdownProps) {
-    const { open, ref, toggle, signOut, signingOut } = useUserMenu(onClose);
+    const [open, setOpen] = useState(false);
+    const { signOut, signingOut } = useSignOut(onClose);
+    const ref = useClickOutside<HTMLDivElement>(useCallback(() => setOpen(false), []));
+
+    function toggle() {
+        setOpen((prev) => !prev);
+    }
 
     if (variant === "mobile") {
         return (

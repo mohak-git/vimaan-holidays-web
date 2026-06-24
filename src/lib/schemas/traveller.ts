@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const TITLE_OPTIONS = ["Mr", "Ms", "Mrs", "Mx"] as const;
+export const TITLE_OPTIONS = ["Mr", "Ms", "Mrs", "Mx", "Dr"] as const;
 export const GENDER_OPTIONS = ["Male", "Female", "Other"] as const;
 
 export const travellerSchema = z.object({

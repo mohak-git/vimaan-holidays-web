@@ -3,7 +3,6 @@
 import { INSURANCE_PER_PERSON } from "@/config/constants";
 import type { PassengerFormData } from "@/lib/schemas/passenger";
 import { passengerSchema } from "@/lib/schemas/passenger";
-import { getSavedTravellers } from "@/lib/services/savedTravellers";
 import {
     countOfTypeUpTo,
     emptyPassenger,
@@ -14,6 +13,7 @@ import {
 import { calculateTotal } from "@/lib/utils/pricing";
 import { useBookingStore } from "@/store/useBookingStore";
 import { useFlightSearchStore } from "@/store/useFlightSearchStore";
+import { useUserStore } from "@/store/useUserStore";
 import type { PassengerDetails, PassengerType } from "@/types/flights/booking";
 import type { SavedTraveller } from "@/types/user";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
@@ -91,7 +91,7 @@ export function useBookingForm() {
         });
     }, [farePrice, totalPassengers]);
 
-    const savedTravellers = useMemo(() => getSavedTravellers(), []);
+    const { savedTravellers } = useUserStore();
 
     const handlePassengerSave = useCallback(
         (idx: number) => (data: PassengerFormData) => {
@@ -118,22 +118,19 @@ export function useBookingForm() {
 
     const handleFillFromSaved = useCallback(
         (traveller: SavedTraveller) => {
-            const data = {
-                title: traveller.title,
-                firstName: traveller.firstName,
-                lastName: traveller.lastName,
-                dateOfBirth: traveller.dateOfBirth,
-                gender: traveller.gender,
-                nationality: traveller.nationality,
-            };
+            const { id: savedTravellerId, ...personFields } = traveller;
 
-            if (isDuplicate(passengerForms, data, activePassengerIdx)) {
+            if (isDuplicate(passengerForms, personFields, activePassengerIdx)) {
                 toast.error("This traveller is already added");
                 return;
             }
 
             const updated = [...passengerForms];
-            updated[activePassengerIdx] = { ...updated[activePassengerIdx], ...data };
+            updated[activePassengerIdx] = {
+                ...updated[activePassengerIdx],
+                ...personFields,
+                savedTravellerId,
+            };
             setPassengers(updated);
 
             setFormVersions((prev) => {

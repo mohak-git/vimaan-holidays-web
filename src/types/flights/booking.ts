@@ -23,6 +23,7 @@ export interface PassengerDetails extends Person {
     email: string;
     studentId?: string;
     serviceId?: string;
+    savedTravellerId?: string;
     type: PassengerType;
 }
 

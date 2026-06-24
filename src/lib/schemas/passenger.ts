@@ -1,13 +1,8 @@
 import { z } from "zod";
+import { travellerSchema } from "./traveller";
 
-export const passengerSchema = z
-    .object({
-        title: z.string().min(1, "Title is required"),
-        firstName: z.string().min(1, "First name is required").max(50),
-        lastName: z.string().min(1, "Last name is required").max(50),
-        dateOfBirth: z.string().min(1, "Date of birth is required"),
-        gender: z.string().min(1, "Gender is required"),
-        nationality: z.string().min(1, "Nationality is required"),
+export const passengerSchema = travellerSchema
+    .extend({
         phone: z.string().optional(),
         email: z.string().email().optional().or(z.literal("")),
         studentId: z.string().optional(),
