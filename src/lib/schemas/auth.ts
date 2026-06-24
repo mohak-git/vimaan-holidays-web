@@ -40,8 +40,14 @@ export const changePasswordSchema = z
         path: ["newPassword"],
     });
 
+export const profileSchema = z.object({
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    phone: z.string().optional(),
+});
+
 export type SignInData = z.infer<typeof signInSchema>;
 export type SignUpData = z.infer<typeof signUpSchema>;
 export type EmailResetData = z.infer<typeof emailResetSchema>;
 export type ResetData = z.infer<typeof resetSchema>;
 export type ChangePasswordData = z.infer<typeof changePasswordSchema>;
+export type ProfileData = z.infer<typeof profileSchema>;
