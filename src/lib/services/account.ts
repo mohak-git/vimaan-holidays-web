@@ -22,6 +22,9 @@ export function searchHelpArticles(query: string): HelpArticle[] {
 export function searchFAQs(query: string): FAQItem[] {
     const q = query.toLowerCase();
     return mockFaqs.filter(
-        (f) => f.question.toLowerCase().includes(q) || f.answer.toLowerCase().includes(q),
+        (f) =>
+            f.question.toLowerCase().includes(q) ||
+            f.answer.toLowerCase().includes(q) ||
+            f.category.toLowerCase().includes(q),
     );
 }
