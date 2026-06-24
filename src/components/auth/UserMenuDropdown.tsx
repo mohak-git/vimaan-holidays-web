@@ -1,7 +1,7 @@
 "use client";
 
 import { useUserMenu } from "@/hooks/auth/useUserMenu";
-import { KeyRound, Loader2, LogOut } from "lucide-react";
+import { LayoutDashboard, Loader2, LogOut } from "lucide-react";
 import Link from "next/link";
 import { UserAvatar } from "./UserAvatar";
 import type { UserButtonProps } from "./UserButton";
@@ -29,12 +29,12 @@ export function UserMenuDropdown({ name, email, image, variant, onClose }: UserM
                 </div>
 
                 <Link
-                    href="/change-password"
+                    href="/dashboard"
                     onClick={onClose}
                     className="mt-3 flex w-full items-center justify-center gap-2 rounded-lg border border-white/10 px-4 py-2.5 text-sm text-white/70 transition-colors hover:border-coral/40 hover:bg-coral/10 hover:text-white"
                 >
-                    <KeyRound className="h-4 w-4" />
-                    Change password
+                    <LayoutDashboard className="h-4 w-4" />
+                    Dashboard
                 </Link>
 
                 <button
@@ -68,7 +68,7 @@ export function UserMenuDropdown({ name, email, image, variant, onClose }: UserM
             {open && (
                 <div
                     role="menu"
-                    className="absolute right-0 top-full z-10 mt-2 min-w-[220px] rounded-xl border border-sand-dark bg-white shadow-soft"
+                    className="absolute right-0 top-full z-1 mt-2 min-w-[220px] rounded-xl border border-sand-dark bg-white shadow-soft"
                 >
                     <div className="border-b border-sand-dark px-4 py-3">
                         <p className="truncate text-sm font-medium text-ink">{name}</p>
@@ -76,13 +76,13 @@ export function UserMenuDropdown({ name, email, image, variant, onClose }: UserM
                     </div>
                     <div className="p-1">
                         <Link
-                            href="/change-password"
+                            href="/dashboard"
                             role="menuitem"
                             onClick={onClose}
                             className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-sm text-ink/70 transition-colors hover:bg-sand hover:text-ink"
                         >
-                            <KeyRound className="h-4 w-4" />
-                            Change password
+                            <LayoutDashboard className="h-4 w-4" />
+                            Dashboard
                         </Link>
 
                         <button
