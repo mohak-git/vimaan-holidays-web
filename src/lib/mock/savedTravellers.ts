@@ -1,4 +1,4 @@
-import type { SavedTraveller } from "@/types/user";
+import { SavedTraveller } from "@/types/user";
 
 export const savedTravellers: SavedTraveller[] = [
     {
@@ -9,9 +9,6 @@ export const savedTravellers: SavedTraveller[] = [
         dateOfBirth: "1990-05-15",
         gender: "Male",
         nationality: "Indian",
-        passportNumber: "Z1234567",
-        passportExpiry: "2030-12-31",
-        frequentFlyerNumber: "AI6E12345",
     },
     {
         id: "ST2",
@@ -21,9 +18,6 @@ export const savedTravellers: SavedTraveller[] = [
         dateOfBirth: "1985-08-22",
         gender: "Female",
         nationality: "Indian",
-        passportNumber: "A7654321",
-        passportExpiry: "2028-06-15",
-        frequentFlyerNumber: "6E98765",
     },
     {
         id: "ST3",
@@ -33,8 +27,5 @@ export const savedTravellers: SavedTraveller[] = [
         dateOfBirth: "1995-12-01",
         gender: "Male",
         nationality: "Indian",
-        passportNumber: "B4567890",
-        passportExpiry: "2029-09-30",
-        frequentFlyerNumber: "UK45678",
     },
 ];

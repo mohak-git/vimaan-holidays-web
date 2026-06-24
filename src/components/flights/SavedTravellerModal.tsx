@@ -1,8 +1,9 @@
 "use client";
 
+import { useScrollLock } from "@/hooks/useScrollLock";
 import type { SavedTraveller } from "@/types/user";
 import { UserCheck, X } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 interface Props {
     travellers: SavedTraveller[];
@@ -14,14 +15,7 @@ interface Props {
 export default function SavedTravellerModal({ travellers, open, onClose, onSelect }: Props) {
     const overlayRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (open) document.body.style.overflow = "hidden";
-        else document.body.style.overflow = "";
-
-        return () => {
-            document.body.style.overflow = "";
-        };
-    }, [open]);
+    useScrollLock(open);
 
     if (!open) return null;
 

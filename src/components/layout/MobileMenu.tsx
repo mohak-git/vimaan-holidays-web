@@ -7,6 +7,7 @@ import { Download, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 interface Props {
     isOpen: boolean;
@@ -25,15 +26,10 @@ export default function MobileMenu({ isOpen, handleClose }: Props) {
         return () => document.removeEventListener("keydown", handleKey);
     }, [isOpen, handleClose]);
 
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = "hidden";
-            closeRef.current?.focus();
-        } else document.body.style.overflow = "";
+    useScrollLock(isOpen);
 
-        return () => {
-            document.body.style.overflow = "";
-        };
+    useEffect(() => {
+        if (isOpen) closeRef.current?.focus();
     }, [isOpen]);
 
     return (
