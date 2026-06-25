@@ -30,6 +30,12 @@ export const QUICK_ACTIONS: IconLink[] = [
     { label: "Get Support", href: "/help", icon: HelpCircle },
 ];
 
+export const BOOKING_FILTERS = [
+    { value: "confirmed", label: "Upcoming" },
+    { value: "completed", label: "Completed" },
+    { value: "cancelled", label: "Cancelled" },
+] as const satisfies readonly { value: string; label: string }[];
+
 interface SupportChannel extends IconLink {
     desc: string;
 }
