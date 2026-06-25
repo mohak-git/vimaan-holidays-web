@@ -1,4 +1,5 @@
 import type { PassengerDetails, PassengerType } from "@/types/flights/booking";
+import { GENDER_OPTIONS, TITLE_OPTIONS } from "@/types/person";
 
 export const TYPE_LABEL: Record<PassengerType, string> = {
     adult: "Adult",
@@ -10,11 +11,11 @@ export function emptyPassenger(id: string, type: PassengerType): PassengerDetail
     return {
         id,
         type,
-        title: "",
+        title: TITLE_OPTIONS[0],
         firstName: "",
         lastName: "",
         dateOfBirth: "",
-        gender: "",
+        gender: GENDER_OPTIONS[0],
         nationality: "Indian",
         phone: "",
         email: "",

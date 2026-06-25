@@ -1,3 +1,4 @@
+import { GENDER_OPTIONS, TITLE_OPTIONS } from "@/types/person";
 export interface User {
     name: string;
     email: string;
@@ -6,10 +7,10 @@ export interface User {
 
 export interface SavedTraveller {
     id: string;
-    title: string;
+    title: (typeof TITLE_OPTIONS)[number];
     firstName: string;
     lastName: string;
     dateOfBirth: string;
-    gender: string;
+    gender: (typeof GENDER_OPTIONS)[number];
     nationality: string;
 }

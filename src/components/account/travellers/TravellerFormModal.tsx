@@ -2,13 +2,9 @@
 
 import { Field, inputClass } from "@/components/ui/Field";
 import { useScrollLock } from "@/hooks/useScrollLock";
-import {
-    GENDER_OPTIONS,
-    TITLE_OPTIONS,
-    travellerSchema,
-    type TravellerFormData,
-} from "@/lib/schemas/traveller";
+import { travellerSchema, type TravellerFormData } from "@/lib/schemas/traveller";
 import { cn } from "@/lib/utils";
+import { GENDER_OPTIONS, TITLE_OPTIONS } from "@/types/person";
 import type { SavedTraveller } from "@/types/user";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X } from "lucide-react";

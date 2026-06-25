@@ -118,7 +118,7 @@ export function useBookingForm() {
 
     const handleFillFromSaved = useCallback(
         (traveller: SavedTraveller) => {
-            const { id: savedTravellerId, ...personFields } = traveller;
+            const { id: savedTravellerId, ...personFields } = traveller as PassengerDetails;
 
             if (isDuplicate(passengerForms, personFields, activePassengerIdx)) {
                 toast.error("This traveller is already added");

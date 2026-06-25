@@ -2,8 +2,8 @@
 
 import { Field, inputClass } from "@/components/ui/Field";
 import { passengerSchema, type PassengerFormData } from "@/lib/schemas/passenger";
-import { GENDER_OPTIONS, TITLE_OPTIONS } from "@/lib/schemas/traveller";
 import type { PassengerType } from "@/types/flights/booking";
+import { GENDER_OPTIONS, TITLE_OPTIONS } from "@/types/person";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Trash2 } from "lucide-react";
 import { useEffect, useRef } from "react";
@@ -111,7 +111,9 @@ export default function PassengerForm({
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <Field label="Title" error={errors.title?.message} required>
                     <select {...register("title")} className={inputClass}>
-                        <option value="">Select</option>
+                        <option value="" disabled>
+                            Select
+                        </option>
                         {TITLE_OPTIONS.map((t) => (
                             <option key={t} value={t}>
                                 {t}
@@ -130,7 +132,9 @@ export default function PassengerForm({
 
                 <Field label="Gender" error={errors.gender?.message} required>
                     <select {...register("gender")} className={inputClass}>
-                        <option value="">Select</option>
+                        <option value="" disabled>
+                            Select
+                        </option>
                         {GENDER_OPTIONS.map((g) => (
                             <option key={g} value={g}>
                                 {g}

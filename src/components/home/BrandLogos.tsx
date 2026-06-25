@@ -21,7 +21,7 @@ function LogoItem({ brand, src }: BrandLogo) {
 
 export default function BrandLogos() {
     return (
-        <section className="w-full bg-dark-sandal py-15" aria-labelledby={HEADING_ID}>
+        <section className="w-full bg-sand py-15" aria-labelledby={HEADING_ID}>
             <div className="mx-auto max-w-7xl flex flex-col gap-12 px-6">
                 <SectionHeader
                     title="Trusted by Top Brands Worldwide"

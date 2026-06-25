@@ -50,12 +50,12 @@ function MainCard({ route }: { route: Route }) {
 function Divider({ airline }: Divider) {
     return (
         <div className="relative flex items-center justify-center transition-colors duration-300 bg-linear-to-r from-50% to-50% to-coral group-hover:to-coral-hover">
-            <span className="absolute -top-2.5 left-1/2 h-5 w-5 -translate-x-1/2 rounded-full bg-dark-sandal" />
+            <span className="absolute -top-2.5 left-1/2 h-5 w-5 -translate-x-1/2 rounded-full bg-sand" />
             <span className="absolute left-1/2 top-1/2 h-[calc(100%-1.5rem)] -translate-x-1/2 -translate-y-1/2 border-l border-dashed border-ink/50" />
             <span className="ml-px rotate-180 text-[10px] font-semibold uppercase tracking-[0.22em] text-ink/50 group-hover:text-ink/75 transition-colors duration-300 [writing-mode:vertical-rl]">
                 {airline}
             </span>
-            <span className="absolute -bottom-2.5 left-1/2 h-5 w-5 -translate-x-1/2 rounded-full bg-dark-sandal" />
+            <span className="absolute -bottom-2.5 left-1/2 h-5 w-5 -translate-x-1/2 rounded-full bg-sand" />
         </div>
     );
 }

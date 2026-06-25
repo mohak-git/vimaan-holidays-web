@@ -1,7 +1,5 @@
+import { GENDER_OPTIONS, TITLE_OPTIONS } from "@/types/person";
 import { z } from "zod";
-
-export const TITLE_OPTIONS = ["Mr", "Ms", "Mrs", "Mx", "Dr"] as const;
-export const GENDER_OPTIONS = ["Male", "Female", "Other"] as const;
 
 export const travellerSchema = z.object({
     title: z.enum(TITLE_OPTIONS, "Select a title"),
