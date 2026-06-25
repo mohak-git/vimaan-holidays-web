@@ -1,6 +1,6 @@
+import { usePriceBreakdown } from "@/hooks/usePriceBreakdown";
 import { getBaggageOptions, getMeals, getSeatMap } from "@/lib/services/addons";
 import { useBookingStore } from "@/store/useBookingStore";
-import { usePriceBreakdown } from "@/hooks/usePriceBreakdown";
 import { useParams, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
@@ -115,8 +115,15 @@ export function useBookingAddons() {
     );
 
     const handleContinue = useCallback(() => {
+        const missing = passengers.filter(
+            (p) => !selectedSeats.some((s) => s.passengerId === p.id),
+        );
+        if (missing.length > 0) {
+            toast.error("Please select a seat for every passenger before continuing");
+            return;
+        }
         router.push(`/flights/${resolvedFlightId}/booking/payment`);
-    }, [router, resolvedFlightId]);
+    }, [router, resolvedFlightId, passengers, selectedSeats]);
 
     return {
         resolvedFlightId,
